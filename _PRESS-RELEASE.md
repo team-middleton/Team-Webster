@@ -18,27 +18,38 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
+  
+  Drink through Music
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
-
+  
+   College students and young adults who enjoy all types of night life.
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
-
+  
+Our app features an advanced algorithm that calculates the perfect playlist paired with a drink to curate the beggining of your night. Whether its a night out at the bars, a party on frat row, or a night home with netflix and chill, our app has the perfect pairing for you. 
 ## Problem ##
   > Describe the problem your product solves.
-
+  
+  Our app solves the social stress of putting together the perfect drink and music pairing. Just pick your mood, and you're good to go!
 ## Solution ##
   > Describe how your product elegantly solves the problem.
 
+  Instead of creating your playlist from scratch everytime, while worrying about choice of drink entandem, for your next pregame input your mood and watch our algorithm produce a delicate pair of tunes and drink to start (or end) your night to!
 ## Quote from You ##
   > A quote from a spokesperson in your company.
 
+  "Start your night out with ease"
 ## How to Get Started ##
   > Describe how easy it is to get started.
 
+  Just pick a mood from our drop down, and watch the results fly. 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
-
+  
+  "I'm not very musical, nor a fancy drinker. Drink through Music lets me impress any and all friends I have over with the fine taste of a connoisseur! 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
+  
+  Let our Drink through Music do the hard work for you, open up our app, input your mood, and let the vibes fly. 
