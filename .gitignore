@@ -4,3 +4,9 @@ bower_components/
 .DS_Store
 
 build/
+
+<<<<<<< HEAD
+bundle.js
+=======
+bundle.js
+>>>>>>> feature
