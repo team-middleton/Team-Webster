@@ -1,10 +1,14 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const request = require('request')
-const helpers = require('./helpers.js').helpers;
+
 
 
 const app = express();
+
+
+var express = require('express');
+var bodyParser = require('body-parser');
+var request = require('request')
+var app = express();
+var db = require('../database/database.js');
 
 
 app.use(express.static(__dirname + '/../client/dist'));
@@ -20,9 +24,11 @@ app.post('/drinks', function(req, res) {
   res.end();
 })
 
+
 //GET ROUTE
 app.get('/drinks', function(req, res) {
   
+
 })
 
 app.listen(3000, function() {
