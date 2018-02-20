@@ -1,15 +1,10 @@
-
-
-
-const app = express();
-
-
 var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request')
 var app = express();
 var db = require('../database/database.js');
 
+const app = express();
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json())
