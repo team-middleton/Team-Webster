@@ -5,4 +5,8 @@ bower_components/
 
 build/
 
+<<<<<<< HEAD
 bundle.js
+=======
+bundle.js
+>>>>>>> feature
