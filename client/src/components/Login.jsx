@@ -26,6 +26,7 @@ class Login extends React.Component {
     }).then(() => {
       console.log("Successfully logged in")
       this.setState({username: '', password: ''});
+      ReactDOM.render(<App />, document.getElementById('app'));
     }).catch((error) => {
       throw error;
     })

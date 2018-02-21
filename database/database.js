@@ -15,9 +15,9 @@ connection.connect((error) => {
 
 const users = `CREATE TABLE IF NOT EXISTS users (
   id INT NOT NULL AUTO_INCREMENT,
-  username VARCHAR(30) NOT NULL,
-  password VARCHAR(30) NOT NULL,
-  email VARCHAR(100) NOT NULL,
+  username VARCHAR(255) NOT NULL,
+  password VARCHAR(2000) NOT NULL,
+  email VARCHAR(255) NOT NULL,
   PRIMARY KEY (id),
   CONSTRAINT UC_users UNIQUE(username, email)
 )`;
