@@ -20,10 +20,12 @@
     "axios": "^0.18.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.0",
+    "express-promise": "^0.4.0",
     "jquery": "^3.1.1",
     "mysql": "^2.15.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "request": "^2.83.0"
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
   }
 }
