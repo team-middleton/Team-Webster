@@ -1,7 +1,6 @@
 const axios = require('axios');
 const token = require('../config.js');
 const request = require('request-promise');
-const spotToken = require('../configSpotify');
 const SpotifyWebApi = require('spotify-web-api-node');
 
 let helpers = {}; 
@@ -20,7 +19,6 @@ spotifyApi.clientCredentialsGrant()
 .then(function(data) {
   console.log('The access token expires in ' + data.body['expires_in']);
   console.log('The access token is ' + data.body['access_token']);
-
   // Save the access token so that it's used in future calls
   spotifyApi.setAccessToken(data.body['access_token']);
       return spotifyApi.getArtistTopTracks('0oSGxfWSnnOXhD2fKuz2Gy', 'GB')
@@ -29,8 +27,6 @@ spotifyApi.clientCredentialsGrant()
 }, function(err) {
   console.log('Something went wrong when retrieving an access token', err.message);
 });
-
-
 }
 
 // //Helper function to randomie beer index

@@ -9,5 +9,4 @@ const Drinks = ({drinks}) => (
 	</div>
 )
 
-
 export default Drinks

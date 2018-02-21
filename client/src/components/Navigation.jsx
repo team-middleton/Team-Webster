@@ -11,7 +11,7 @@ class Navigation extends React.Component {
   render() {
     return (
       <Menu>
-        <Dropdown />
+        <Dropdown selectHandler = {this.props.selectHandler} category={this.props.category}/>
         <Menu.Menu position='right'>
           <Menu.Item as='a' name='login' onClick={this.props.onLoginClick}>
             Login
