@@ -7,6 +7,7 @@ import Playlist from './components/Playlist.jsx';
 import Drinks from './components/Drinks.jsx';
 import Signup from './components/Signup.jsx';
 import Login from './components/Login.jsx';
+import Navigation from './components/Navigation.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -14,16 +15,26 @@ class App extends React.Component {
   	this.state = {
 
   	}
+    this.onLoginClick = this.onLoginClick.bind(this);
+    this.onSignupClick = this.onSignupClick.bind(this);
+  }
+
+  onLoginClick() {
+    ReactDOM.render(<Login />, document.getElementById('app'));
+  }
+
+  onSignupClick() {
+    ReactDOM.render(<Signup />, document.getElementById('app'));
   }
 
   render () {
   	return (
       <div>
-        <Dropdown />
-        <Signup />
-        <Login />
+        <Navigation onSignupClick={this.onSignupClick} onLoginClick={this.onLoginClick} />
       </div>)
   }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
+
+export default App
