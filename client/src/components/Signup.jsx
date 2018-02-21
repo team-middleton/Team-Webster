@@ -27,6 +27,7 @@ class Signup extends React.Component {
       email: this.state.email
     }).then(() => {
       this.setState({username: '', password: '', email: ''});
+      ReactDOM.render(<App />, document.getElementById('app'));
     }).catch((error) => {
       throw error;
     })
@@ -57,11 +58,11 @@ class Signup extends React.Component {
             <Form onSubmit={this.signup}>
               <Form.Field>
                 <label>Username</label>
-                <input type='text' placeholder='Enter Username' value={this.state.username} onChange={this.onChangeUsername}/>
+                <input type='text' name='username' placeholder='Enter Username' value={this.state.username} onChange={this.onChangeUsername}/>
               </Form.Field>
               <Form.Field>
                 <label>Password</label>
-                <input type='password' placeholder='Enter Password' value={this.state.password} onChange={this.onChangePassword}/>
+                <input type='password' name='password' placeholder='Enter Password' value={this.state.password} onChange={this.onChangePassword}/>
               </Form.Field>
               <Form.Field>
                 <label>E-mail</label>
