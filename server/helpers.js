@@ -1,7 +1,6 @@
 const axios = require('axios');
 const token = require('../config.js');
 const request = require('request-promise');
-const spotToken = require('../configSpotify');
 const SpotifyWebApi = require('spotify-web-api-node');
 
 let helpers = {}; 
