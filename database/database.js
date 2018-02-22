@@ -22,7 +22,22 @@ const users = `CREATE TABLE IF NOT EXISTS users (
   CONSTRAINT UC_users UNIQUE(username, email)
 )`;
 
+const favorites = `CREATE TABLE IF NOT EXISTS favorites (
+  id INT NOT NULL AUTO_INCREMENT,
+  drinks VARCHAR(5000) NOT NULL,
+  music VARCHAR(255) NOT NULL,
+  user_id INT NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users (id),
+  CONSTRAINT UC_favorites PRIMARY KEY (id, music, user_id)
+)`;
+
 connection.query(users, (error) => {
+  if (error) {
+    console.log('There was an error creating table:', error);
+  }
+})
+
+connection.query(favorites, (error) => {
   if (error) {
     console.log('There was an error creating table:', error);
   }
