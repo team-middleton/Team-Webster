@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
 
 connection.connect((error) => {
   if (error) {
-    // console.log('Error connecting to mySQL', error);
+    console.log('Error connecting to mySQL', error);
   }
   console.log('Succesfully Connected to mySQL DB');
 });
@@ -24,7 +24,7 @@ const users = `CREATE TABLE IF NOT EXISTS users (
 
 connection.query(users, (error) => {
   if (error) {
-    // console.log('There was an error creating table:', error);
+    console.log('There was an error creating table:', error);
   }
 })
 
