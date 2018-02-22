@@ -15,7 +15,8 @@ class App extends React.Component {
   	this.state = {
 			selectedCategory: '',
       drinks: [],
-      alcohols: []
+      alcohols: [],
+      uriId: ''
   	}
     this.onLoginClick = this.onLoginClick.bind(this);
     this.onSignupClick = this.onSignupClick.bind(this);
@@ -35,6 +36,17 @@ class App extends React.Component {
 		.catch((err) => {
 			console.log(err);
 		})
+
+    axios.post('/playlist', {category: this.state.selectedCategory})
+    .then((response) => {
+      console.log("This is the playlist", response);
+      this.setState({
+        uriId: response.data.id
+      })
+    })
+    .catch((error) => {
+      console.log("this is the playlist", error);
+    })
 	}
 
   settingAlcohols(category) {
@@ -50,11 +62,11 @@ class App extends React.Component {
 			this.setState({
 				alcohols: ['red+wine', 'white+wine', 'gin']
 			}, this.getAlcohols)
-		} else if (category === 'relax') {
+		} else if (category === 'chill') {
 			this.setState({
 				alcohols: ['whiskey', 'red+wine', 'beer']
 			}, this.getAlcohols)
-		} else if (category === 'trashed') {
+		} else if (category === 'rock') {
 			this.setState({
 				alcohols: ['whiskey', 'tequila', 'vodka', 'rum', 'gin']
 			}, this.getAlcohols)
@@ -79,7 +91,7 @@ class App extends React.Component {
   	return (
       <div>
         <Navigation onSignupClick={this.onSignupClick} onLoginClick={this.onLoginClick} selectHandler={this.changeCategory} category={this.state.selectedCategory} drinks={this.state.drinks}/>
-        <SpotifyPlayer uri="spotify:album:1TIUsv8qmYLpBEhvmBmyBk" size={{width: 800, height: 500}} theme="white" view="list" />
+        <SpotifyPlayer uri={'spotify:user:spotify:playlist:' + this.state.uriId} size={{width: 800, height: 500}} theme="white" view="list" />
         <Drinks drinks={this.state.drinks}/>
       </div>)
   }

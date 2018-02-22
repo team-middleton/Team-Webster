@@ -13,9 +13,9 @@ class Dropdown extends React.Component {
 			<div>
 				<select value={this.props.category} onChange={(e) => (this.props.selectHandler(e))}>
 					<option value="party">Party</option>
-					<option value="relax">Relax</option>
+					<option value="chill">Relax</option>
 					<option value="classical">Classical</option>
-					<option value="trashed">Trashed</option>
+					<option value="rock">Trashed</option>
 					<option value="romance">Romance</option>
 				</select>
 			</div>
