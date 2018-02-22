@@ -24,6 +24,7 @@ class SpotifyPlayer extends Component {
     }
 
     return (
+      <div className = " ui container">
       <iframe
         title="Spotify"
         className="SpotifyPlayer"
@@ -33,6 +34,7 @@ class SpotifyPlayer extends Component {
         frameBorder="0"
         allowTransparency="true"
       />
+      </div>
     );
   }
 
