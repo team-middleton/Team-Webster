@@ -15,10 +15,10 @@ var settings = {
 
 const Drinks = ({drinks}) =>
 (
-	<Slider {...settings}>
+	<Slider className = "slider" {...settings}>
 		{drinks.map((drink, i) =>
-			<div>
-				<img key={i} src={drink.drinkImageUrl} style={{height: "850", width: "800", borderRadius: '5%'}}/>
+			<div >
+				<img className = "ui image container" key={i} src={drink.drinkImageUrl} style={{height: "850", width: "800", borderRadius: '5%'}}/>
 			</div>
 		)}
 	</Slider>

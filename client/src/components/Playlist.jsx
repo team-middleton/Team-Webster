@@ -24,10 +24,10 @@ class SpotifyPlayer extends Component {
     }
 
     return (
-      <div className = " ui container">
+      <div className = "player">
       <iframe
         title="Spotify"
-        className="SpotifyPlayer"
+        className="container"
         src={`https://embed.spotify.com/?uri=${uri}&view=${view}&theme=${theme}`}
         width={size.width}
         height={size.height}
