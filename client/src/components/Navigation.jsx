@@ -1,17 +1,43 @@
 import React from 'react';
 import axios from 'axios';
-import { Menu, Dropdown } from 'semantic-ui-react';
+import { Menu, Dropdown, Icon  } from 'semantic-ui-react';
 import Drop from './Dropdown.jsx'
 
 class Navigation extends React.Component {
   constructor(props) {
     super(props);
   }
+
   render() {
+    let heartState;
+    if (this.props.favorited === false) {
+      heartState = <Icon className='empty heart'></Icon>
+    } else {
+      heartState = <Icon className='heart'></Icon>
+    }
+
+    let favorites;
+    if (this.props.listOfFavorites.length === 0) {
+      favorites = <Dropdown.Item>No Favorites</Dropdown.Item>
+    } else {
+      favorites = this.props.listOfFavorites.map((item, i) =>
+        <Dropdown.Item as='a' key={i}>{'Favorite ' + (i + 1)}</Dropdown.Item>
+      )
+    }
+
     return (
       <Menu inverted fluid widths={3}>
         <Menu.Item>
-          Favorites
+          <Menu.Item onClick={this.props.addFavorite}>
+            {heartState}
+          </Menu.Item>
+          <Menu.Item>
+            <Dropdown item text='Favorites'>
+              <Dropdown.Menu>
+                {favorites}
+              </Dropdown.Menu>
+            </Dropdown>
+          </Menu.Item>
         </Menu.Item>
         <Menu.Item>
           <Drop selectHandler = {this.props.selectHandler} category={this.props.category}/>
@@ -24,6 +50,9 @@ class Navigation extends React.Component {
               </Dropdown.Item>
               <Dropdown.Item as='a' name='signup' onClick={this.props.onSignupClick}>
                 Sign Up
+              </Dropdown.Item>
+              <Dropdown.Item as='a' name='logout' onClick={this.props.onLogoutClick}>
+                Logout
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
