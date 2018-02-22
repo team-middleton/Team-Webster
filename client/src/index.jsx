@@ -118,7 +118,7 @@ class App extends React.Component {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={8}>
-              <div style={{borderRadius: '5%', width:'800', margin:'0 auto', overflow:'hidden'}}>
+              <div style={{borderRadius: '5%', margin:'0 auto', overflow:'hidden'}}>
                 <SpotifyPlayer uri={'spotify:user:spotify:playlist:' + this.state.uriId} size={{width: 800, height: 850}} theme="black" view="list" />
               </div>
             </Grid.Column>
