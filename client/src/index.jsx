@@ -8,6 +8,9 @@ import Signup from './components/Signup.jsx';
 import Login from './components/Login.jsx';
 import Navigation from './components/Navigation.jsx'
 import SpotifyPlayer from './components/Playlist.jsx';
+import {Button, Form, Grid} from 'semantic-ui-react'
+
+
 
 class App extends React.Component {
   constructor(props) {
@@ -89,11 +92,20 @@ class App extends React.Component {
 
   render () {
   	return (
-      <div>
-        <Navigation onSignupClick={this.onSignupClick} onLoginClick={this.onLoginClick} selectHandler={this.changeCategory} category={this.state.selectedCategory} drinks={this.state.drinks}/>
-        <SpotifyPlayer uri={'spotify:user:spotify:playlist:' + this.state.uriId} size={{width: 800, height: 500}} theme="white" view="list" />
-        <Drinks drinks={this.state.drinks}/>
-      </div>)
+        <Grid>
+          <Grid.Row columns={16} centered>
+            <Navigation onSignupClick={this.onSignupClick} onLoginClick={this.onLoginClick} selectHandler={this.changeCategory} category={this.state.selectedCategory} drinks={this.state.drinks}/>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={8}>
+              <SpotifyPlayer uri={'spotify:user:spotify:playlist:' + this.state.uriId} size={{width: 800, height: 500}} theme="white" view="list" />
+            </Grid.Column>
+            <Grid.Column width={8}>
+              <Drinks drinks={this.state.drinks}/>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+    )
   }
 }
 

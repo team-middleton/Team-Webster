@@ -29,10 +29,12 @@
     "passport-local-authenticate": "^1.2.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-slick": "^0.18.1",
     "react-spotify-player": "^1.0.4",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
     "semantic-ui-react": "^0.78.2",
+    "slick-carousel": "^1.8.1",
     "spotify-web-api-node": "^2.5.0"
   }
 }
