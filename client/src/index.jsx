@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-import Dropdown from './components/Dropdown.jsx';
+import Drop from './components/Dropdown.jsx';
 import Drinks from './components/Drinks.jsx';
 import Signup from './components/Signup.jsx';
 import Login from './components/Login.jsx';
@@ -77,9 +77,10 @@ class App extends React.Component {
 	}
 
   changeCategory(event) {
+		console.log(event)
 		this.setState({
-			selectedCategory: event.target.value
-		}, this.settingAlcohols(event.target.value))
+			selectedCategory: event
+		}, this.settingAlcohols(event))
 	}
 
   onLoginClick() {
