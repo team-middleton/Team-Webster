@@ -12,8 +12,6 @@ class Drinks extends React.Component {
 	}
 	
 	clickHandler(target) {
-		//event.preventDefault()
-		//console.log('HIIIIIIIIII');
 		this.setState({
 			drink: target
 		})
@@ -51,4 +49,3 @@ class Drinks extends React.Component {
 }
 
 export default Drinks
-//export default Description
