@@ -22,7 +22,7 @@ app.post('/drinks', function (req, res) {
     if (req.body.alcohols[i] !== 'beer' || req.body.alcohols[i] !== 'white+wine' || req.body.alcohols[i] !== 'red+wine') {
       helpers.getCocktails(req.body.alcohols[i])
         .then((data) => {
-          return JSON.parse(data); 
+          return JSON.parse(data);
         })
         .then((cocktailInfo) => {
           var randomIndex = Math.floor((Math.random() * cocktailInfo.drinks.length));
@@ -69,6 +69,14 @@ app.post('/drinks', function (req, res) {
       })
     }
   }
+})
+
+app.post('/playlist', function(req, res) {
+  helpers.getMusic(req.body.category, function(results) {
+    console.log("These are the result playlists", results.playlists);
+    var randomPlaylistIndex = random(results.playlists.items);
+    res.send(results.playlists.items[randomPlaylistIndex]);
+  })
 })
 
 app.post('/signup', function(req, res) {
