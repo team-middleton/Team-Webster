@@ -8,7 +8,7 @@ import Signup from './components/Signup.jsx';
 import Login from './components/Login.jsx';
 import Navigation from './components/Navigation.jsx'
 import SpotifyPlayer from './components/Playlist.jsx';
-import {Button, Form, Grid} from 'semantic-ui-react'
+import {Message, Grid} from 'semantic-ui-react'
 
 
 
@@ -89,6 +89,28 @@ class App extends React.Component {
   }
 
   render () {
+    let rightSide = null;
+    if(this.state.drinks.length === 0) {
+      rightSide = <Message size='massive' compact color='black'>
+        <Message.Header>
+          Welcome to our App!
+        </Message.Header>
+        <br/>
+        <Message.Item>
+          Simply choose a <b>mood</b> up top and we will set the tone for you.
+        </Message.Item>
+        <br/>
+        <Message.Item>
+          We have chosen what we think is the best playlist and drink pairings.
+        </Message.Item>
+        <br/>
+        <Message.Item>
+          Enjoy!
+        </Message.Item>
+      </Message>;
+    } else {
+      rightSide = <Drinks drinks={this.state.drinks}/>;
+    }
   	return (
         <Grid>
           <Grid.Row columns={16} centered>
@@ -101,7 +123,7 @@ class App extends React.Component {
               </div>
             </Grid.Column>
             <Grid.Column width={8}>
-              <Drinks drinks={this.state.drinks}/>
+              {rightSide}
             </Grid.Column>
           </Grid.Row>
         </Grid>
