@@ -19,7 +19,7 @@ class App extends React.Component {
 			selectedCategory: '',
       drinks: [],
       alcohols: [],
-      uriId: ''
+      uriId: '37i9dQZF1DXcBWIGoYBM5M'
   	}
     this.onLoginClick = this.onLoginClick.bind(this);
     this.onSignupClick = this.onSignupClick.bind(this);
@@ -34,21 +34,19 @@ class App extends React.Component {
 			this.setState({
 				drinks: response.data
 			})
-			console.log('CLIENT SIDE DATA', response.data);
 		})
-		.catch((err) => {
-			console.log(err);
+		.catch((error) => {
+			throw error;
 		})
 
     axios.post('/playlist', {category: this.state.selectedCategory})
     .then((response) => {
-      console.log("This is the playlist", response);
       this.setState({
         uriId: response.data.id
       })
     })
     .catch((error) => {
-      console.log("this is the playlist", error);
+      throw error
     })
 	}
 
@@ -77,7 +75,6 @@ class App extends React.Component {
 	}
 
   changeCategory(event) {
-		console.log(event)
 		this.setState({
 			selectedCategory: event
 		}, this.settingAlcohols(event))
@@ -99,7 +96,9 @@ class App extends React.Component {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={8}>
-              <SpotifyPlayer uri={'spotify:user:spotify:playlist:' + this.state.uriId} size={{width: 800, height: 500}} theme="white" view="list" />
+              <div style={{borderRadius: '5%', width:'800', margin:'0 auto', overflow:'hidden'}}>
+                <SpotifyPlayer uri={'spotify:user:spotify:playlist:' + this.state.uriId} size={{width: 800, height: 850}} theme="black" view="list" />
+              </div>
             </Grid.Column>
             <Grid.Column width={8}>
               <Drinks drinks={this.state.drinks}/>

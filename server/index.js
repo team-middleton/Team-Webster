@@ -41,23 +41,20 @@ app.post('/drinks', function (req, res) {
               return cocktail;
             })
             .then((cocktail) => {
-              //console.log('cocktail', cocktail)
               drinksToClient.push(cocktail);
               setTimeout(function() {
                 res.end(JSON.stringify(drinksToClient));
               }, 1000)
-              //console.log('OMGGGGG DRINKKKKKKKK TO CLIENTRTT', drinksToClient, 'LENGTH', drinksToClient.length)
             })
-            .catch((err) => {
-              console.log(err);
+            .catch((error) => {
+              throw error;
             })
         })
-        .catch((err) => {
-          console.log(err);
+        .catch((error) => {
+          throw error;
         })
     }
     if (req.body.alcohols[i] === 'beer') {
-      //console.log("This ran");
       helpers.getBeer(req.body.alcohols[i], function(data) {
         for (var i = 0; i < data.length; i++) {
           var beerOrWine = {
@@ -73,7 +70,6 @@ app.post('/drinks', function (req, res) {
 
 app.post('/playlist', function(req, res) {
   helpers.getMusic(req.body.category, function(results) {
-    console.log("These are the result playlists", results.playlists);
     var randomPlaylistIndex = random(results.playlists.items);
     res.send(results.playlists.items[randomPlaylistIndex]);
   })

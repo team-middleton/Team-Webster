@@ -24,15 +24,13 @@ helpers.getMusic = function(category, cb) {
 // credentials are optional
   spotifyApi.clientCredentialsGrant()
   .then(function(data) {
-    console.log('The access token expires in ' + data.body['expires_in']);
-    console.log('The access token is ' + data.body['access_token']);
     // Save the access token so that it's used in future calls
     spotifyApi.setAccessToken(data.body['access_token']);
         return spotifyApi.getPlaylistsForCategory(category, {country: 'US'})
     }).then(function(data) {
       cb(data.body);
-  }, function(err) {
-    console.log('Something went wrong when retrieving an access token', err.message);
+  }, function(error) {
+    throw error
   });
 }
 
@@ -47,8 +45,8 @@ helpers.getBeer = function (ingredient, cb) {
       beerArray.push(response.data.result[randomBeer],response.data.result[randomBeer2]);
       cb(beerArray);
   })
-  .catch ((err) => {
-    console.log(err);
+  .catch ((error) => {
+    throw error
   })
 
 }
@@ -75,7 +73,6 @@ helpers.filterIngredients = function(obj) {
   var array = Object.keys(obj);
   var ingredientMeasurements = [];
   for (var i = 9; i < array.length - 1; i++) {
-    //console.log(typeof obj[array[i]], 'length', obj[array[i]].length);
     if (obj[array[i]] !== null && obj[array[i]] !== '\r\n' && obj[array[i]].length > 1) {
       ingredientMeasurements.push(obj[array[i]])
     }
