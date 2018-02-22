@@ -1,12 +1,23 @@
 import React from 'react';
+import Slider from 'react-slick';
 
-const Drinks = ({drinks}) => (
-	<div style={{float: 'right'}}>
-		{drinks.map((drink, i) => (
-			<span key={i}>{drink.drinkName}</span>,
-			<img key={i} src={drink.drinkImageUrl} style={{height: "100px", width: "100px"}}/>)
+var settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1
+};
+
+const Drinks = ({drinks}) =>
+(
+	<Slider {...settings}>
+		{drinks.map((drink, i) =>
+			<div>
+				<img key={i} src={drink.drinkImageUrl} style={{height: "500px", width: "500px"}}/>
+			</div>
 		)}
-	</div>
+	</Slider>
 )
 
 export default Drinks
