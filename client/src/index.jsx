@@ -19,13 +19,19 @@ class App extends React.Component {
 			selectedCategory: '',
       drinks: [],
       alcohols: [],
-      uriId: '37i9dQZF1DXcBWIGoYBM5M'
+      uriId: '37i9dQZF1DXcBWIGoYBM5M',
+      favorited: false,
+      listOfFavorites: []
   	}
     this.onLoginClick = this.onLoginClick.bind(this);
     this.onSignupClick = this.onSignupClick.bind(this);
+    this.onLogoutClick = this.onLogoutClick.bind(this);
     this.changeCategory = this.changeCategory.bind(this);
     this.settingAlcohols = this.settingAlcohols.bind(this);
     this.getAlcohols = this.getAlcohols.bind(this);
+    this.addFavorite = this.addFavorite.bind(this);
+    this.onFavorite = this.onFavorite.bind(this);
+    this.renderFavorite = this.renderFavorite.bind(this);
   }
 
   getAlcohols() {
@@ -81,11 +87,59 @@ class App extends React.Component {
 	}
 
   onLoginClick() {
-    ReactDOM.render(<Login />, document.getElementById('app'));
+    ReactDOM.render(<Login renderFavorite={this.renderFavorite}/>, document.getElementById('app'));
   }
 
   onSignupClick() {
     ReactDOM.render(<Signup />, document.getElementById('app'));
+  }
+
+  onLogoutClick() {
+    axios.post('/logout')
+    .then(() => {
+      console.log("Logged Out!");
+    })
+    .catch((error) => {
+      console.log("Failed to log out", error);
+    })
+  }
+
+  addFavorite() {
+    console.log(this.state.favorited);
+    if (this.state.favorited === false) {
+      this.setState({
+        favorited: !this.state.favorited
+      }, this.onFavorite);
+    }
+  }
+
+  onFavorite() {
+    axios.post('/favorites', {drinks: this.state.drinks, playlist: this.state.uriId})
+    .then(() => {
+      this.setState({
+        favorited: !this.state.favorited
+      }, this.renderFavorite);
+    })
+    .catch((error) => {
+      throw error;
+    })
+  }
+
+  renderFavorite() {
+    axios.get('/favorites')
+    .then((results) => {
+      console.log("These are my results from renderFavorite", results.data);
+      this.setState({
+        listOfFavorites: results.data
+      });
+    })
+    .catch((error) => {
+      throw error;
+    })
+  }
+
+  componentDidMount() {
+    this.renderFavorite();
   }
 
   render () {
@@ -114,11 +168,22 @@ class App extends React.Component {
   	return (
         <Grid>
           <Grid.Row columns={16} centered>
-            <Navigation onSignupClick={this.onSignupClick} onLoginClick={this.onLoginClick} selectHandler={this.changeCategory} category={this.state.selectedCategory} drinks={this.state.drinks}/>
+            <Navigation
+              onSignupClick={this.onSignupClick}
+              onLoginClick={this.onLoginClick}
+              onLogoutClick={this.onLogoutClick}
+              selectHandler={this.changeCategory}
+              category={this.state.selectedCategory}
+              drinks={this.state.drinks}
+              addFavorite={this.addFavorite}
+              favorited={this.state.favorited}
+              renderFavorite={this.renderFavorite}
+              listOfFavorites={this.state.listOfFavorites}
+            />
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={8}>
-              <div style={{borderRadius: '5%', width:'800', margin:'0 auto', overflow:'hidden'}}>
+              <div style={{borderRadius: '5%', margin:'0 auto', overflow:'hidden'}}>
                 <SpotifyPlayer uri={'spotify:user:spotify:playlist:' + this.state.uriId} size={{width: 800, height: 850}} theme="black" view="list" />
               </div>
             </Grid.Column>
