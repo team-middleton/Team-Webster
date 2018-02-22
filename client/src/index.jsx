@@ -10,8 +10,6 @@ import Navigation from './components/Navigation.jsx'
 import SpotifyPlayer from './components/Playlist.jsx';
 import {Message, Grid} from 'semantic-ui-react'
 
-
-
 class App extends React.Component {
   constructor(props) {
   	super(props)
@@ -98,6 +96,9 @@ class App extends React.Component {
     axios.post('/logout')
     .then(() => {
       console.log("Logged Out!");
+      this.setState({
+        listOfFavorites: []
+      })
     })
     .catch((error) => {
       console.log("Failed to log out", error);
@@ -166,7 +167,7 @@ class App extends React.Component {
       rightSide = <Drinks drinks={this.state.drinks}/>;
     }
   	return (
-        <Grid>
+        <Grid stackable="true">
           <Grid.Row columns={16} centered>
             <Navigation
               onSignupClick={this.onSignupClick}
