@@ -1,17 +1,16 @@
 const axios = require('axios');
-const token = require('../config.js');
 const request = require('request-promise');
 const SpotifyWebApi = require('spotify-web-api-node');
 
 let helpers = {};
 
 let config = {
- headers: {'Authorization': `token ${token.TOKEN}`}
+ headers: {'Authorization': `token ${process.env.BEER_TOKEN}`}
 };
 
 var spotifyApi = new SpotifyWebApi({
-  clientId : '2464c289439646d5bce72dcce92be15f',
-  clientSecret : '7039c64ea77940a0847d0cc619a28f3c',
+  clientId : process.env.SPOTIFY_CID,
+  clientSecret : process.env.SPOTIFY_SECRET,
   redirectUri : 'https://api.spotify.com/'
 });
 

@@ -2,12 +2,14 @@
   "name": "react-starter",
   "version": "1.0.0",
   "description": "React Starter",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
+    "start": "node server/app.js",
     "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon server/index.js"
+    "server-dev": "nodemon server/app.js",
+    "build": "webpack"
   },
-  "author": "Aaron Chan",
+  "author": "Team Webster",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.23.1",
@@ -24,6 +26,7 @@
     "express-promise": "^0.4.0",
     "express-session": "^1.15.6",
     "jquery": "^3.1.1",
+    "json-loader": "^0.5.7",
     "mysql": "^2.15.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
