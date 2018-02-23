@@ -147,6 +147,17 @@ app.post('/favorites', auth, function(req, res) {
   });
 })
 
+app.post('/delete', auth, function(req, res) {
+  const sqlQuery = `DELETE FROM favorites WHERE id = ${req.body.favId}`
+  db.query(sqlQuery, function(error) {
+    if (error) {
+      throw error;
+    } else {
+      res.sendStatus(201);
+    }
+  })
+})
+
 app.get('/favorites', auth, function(req, res) {
   const sqlQuery = `SELECT favorites.id, drinks, music FROM favorites JOIN users ON favorites.user_id = users.id AND users.username = '${req.session.user}'`;
   db.query(sqlQuery, function(error, results) {

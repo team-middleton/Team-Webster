@@ -39,6 +39,7 @@ class Drinks extends React.Component {
 			useCSS: true
 		};
 
+
 		const overlay = this.state.drink ? <Description drink={this.state.drink} /> : <div></div>
 
 		return (

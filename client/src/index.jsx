@@ -19,8 +19,9 @@ class App extends React.Component {
       alcohols: [],
       uriId: '37i9dQZF1DXcBWIGoYBM5M',
       favorited: false,
-      listOfFavorites: []
-    }
+      listOfFavorites: [],
+      favoriteId: ''
+  	}
     this.onLoginClick = this.onLoginClick.bind(this);
     this.onSignupClick = this.onSignupClick.bind(this);
     this.onLogoutClick = this.onLogoutClick.bind(this);
@@ -31,21 +32,22 @@ class App extends React.Component {
     this.onFavorite = this.onFavorite.bind(this);
     this.renderFavorite = this.renderFavorite.bind(this);
     this.obtainFavorite = this.obtainFavorite.bind(this);
+    this.deleteFavorite = this.deleteFavorite.bind(this);
     this.changeBackgroundColor = this.changeBackgroundColor.bind(this);
   }
 
   getAlcohols() {
     this.changeBackgroundColor();
-    axios.post('/drinks', { alcohols: this.state.alcohols })
-      .then((response) => {
-        console.log('CLIENT DRINKS', response.data)
-        this.setState({
-          drinks: response.data
-        })
-      })
-      .catch((error) => {
-        throw error;
-      })
+		axios.post('/drinks', {alcohols: this.state.alcohols})
+		.then((response) => {
+      console.log("This is response data", response.data);
+			this.setState({
+				drinks: response.data
+			})
+		})
+		.catch((error) => {
+			throw error;
+		})
 
     axios.post('/playlist', { category: this.state.selectedCategory })
       .then((response) => {
@@ -143,10 +145,11 @@ class App extends React.Component {
       })
   }
 
-  obtainFavorite(userFaves) {
-    this.setState({
+  obtainFavorite(userFaves){
+      this.setState ({
       drinks: JSON.parse(userFaves.drinks),
-      uriId: userFaves.music
+      uriId: userFaves.music,
+      favoriteId: userFaves.id
     })
   }
 
@@ -168,7 +171,19 @@ class App extends React.Component {
     }
   }
 
-  render() {
+  deleteFavorite() {
+    if (this.state.favoriteId !== '') {
+      axios.post('/delete', {favId: this.state.favoriteId})
+      .then(() => {
+        this.renderFavorite();
+      })
+      .catch((error) => {
+        throw error;
+      })
+    }
+  }
+
+  render () {
     let rightSide = null;
     if (this.state.drinks.length === 0) {
       rightSide = <Message size='massive' compact color='black'>
@@ -191,34 +206,36 @@ class App extends React.Component {
     } else {
       rightSide = <Drinks drinks={this.state.drinks} />;
     }
-    return (
-      <Grid stackable="true">
-        <Grid.Row columns={16} centered>
-          <Navigation
-            onSignupClick={this.onSignupClick}
-            onLoginClick={this.onLoginClick}
-            onLogoutClick={this.onLogoutClick}
-            selectHandler={this.changeCategory}
-            category={this.state.selectedCategory}
-            drinks={this.state.drinks}
-            addFavorite={this.addFavorite}
-            favorited={this.state.favorited}
-            renderFavorite={this.renderFavorite}
-            listOfFavorites={this.state.listOfFavorites}
-            obtainFavorite={this.obtainFavorite}
-          />
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column width={8}>
-            <div style={{ borderRadius: '5%', margin: '0 auto', overflow: 'hidden' }}>
-              <SpotifyPlayer uri={'spotify:user:spotify:playlist:' + this.state.uriId} size={{ width: 800, height: 850 }} theme="black" view="list" />
-            </div>
-          </Grid.Column>
-          <Grid.Column width={8}>
-            {rightSide}
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+
+  	return (
+        <Grid stackable>
+          <Grid.Row columns={16} centered>
+            <Navigation
+              onSignupClick={this.onSignupClick}
+              onLoginClick={this.onLoginClick}
+              onLogoutClick={this.onLogoutClick}
+              selectHandler={this.changeCategory}
+              category={this.state.selectedCategory}
+              drinks={this.state.drinks}
+              addFavorite={this.addFavorite}
+              favorited={this.state.favorited}
+              renderFavorite={this.renderFavorite}
+              listOfFavorites={this.state.listOfFavorites}
+              obtainFavorite={this.obtainFavorite}
+              deleteFavorite={this.deleteFavorite}
+            />
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={8}>
+              <div style={{margin:'0 auto', overflow:'auto'}}>
+                <SpotifyPlayer uri={'spotify:user:spotify:playlist:' + this.state.uriId} size={{width: 800, height: 850}} theme="black" view="list" />
+              </div>
+            </Grid.Column>
+            <Grid.Column width={8}>
+              {rightSide}
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
     )
   }
 }
