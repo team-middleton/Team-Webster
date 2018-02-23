@@ -40,7 +40,7 @@ class Drinks extends React.Component {
 		};
 
 
-		const overlay = this.state.drink ? <Description drink={this.state.drink} /> : <div></div>
+		const overlay = this.state.drink ? <Description drink={this.state.drink} /> : null
 
 		return (
 			<div>

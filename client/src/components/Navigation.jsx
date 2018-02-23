@@ -27,7 +27,7 @@ class Navigation extends React.Component {
     }
 
     return (
-      <Menu inverted fluid widths={3}>
+      <Menu inverted fluid widths={3} id="navbar">
         <Menu.Item>
           <Menu.Item onClick={this.props.addFavorite}>
             {heartState}
