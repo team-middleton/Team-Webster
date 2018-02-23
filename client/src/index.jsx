@@ -159,15 +159,15 @@ class App extends React.Component {
 
   changeBackgroundColor() {
     if (this.state.selectedCategory === 'party') {
-      document.body.style.backgroundColor = '#6e6170'
+      document.getElementById("navbar").style.backgroundColor = '#6e6170'
     } else if (this.state.selectedCategory === 'romance') {
-      document.body.style.backgroundColor = 'pink'
+      document.getElementById("navbar").style.backgroundColor = 'pink'
     } else if (this.state.selectedCategory === 'chill') {
-      document.body.style.backgroundColor = '#bf920d'
+      document.getElementById("navbar").style.backgroundColor = '#bf920d'
     } else if (this.state.selectedCategory === 'rock') {
-      document.body.style.backgroundColor = '#162613'
+      document.getElementById("navbar").style.backgroundColor = '#162613'
     } else if (this.state.selectedCategory === 'classical') {
-      document.body.style.backgroundColor = '#081730'
+      document.getElementById("navbar").style.backgroundColor = '#081730'
     }
   }
 
@@ -211,6 +211,7 @@ class App extends React.Component {
         <Grid stackable>
           <Grid.Row columns={16} centered>
             <Navigation
+              id='navbar'
               onSignupClick={this.onSignupClick}
               onLoginClick={this.onLoginClick}
               onLogoutClick={this.onLogoutClick}
