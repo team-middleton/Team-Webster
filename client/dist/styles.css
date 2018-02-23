@@ -39,6 +39,7 @@ div.description{
 	color:white;
 	opacity:0.4; /* transparency */
 	filter:alpha(opacity=60); /* IE transparency */
+	ont-size: 20px
 }
 p.description_content{
 	overflow-wrap: break-word;

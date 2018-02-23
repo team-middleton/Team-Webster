@@ -37,13 +37,8 @@ class Drinks extends React.Component {
 			arrows: false,
 			useCSS: true
 		};
- 	
-		let overlay;
-		if (this.state.drink) {
-			overlay = <Description className='description' drink={this.state.drink} />;
-		} else {
-			overlay = null;
-		}
+
+		const overlay = this.state.drink ? <Description drink={this.state.drink} /> : null
 
 		return (
 			<div>

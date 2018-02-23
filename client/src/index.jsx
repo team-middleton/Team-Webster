@@ -222,6 +222,7 @@ class App extends React.Component {
         <Grid stackable>
           <Grid.Row columns={16} centered>
             <Navigation
+              id='navbar'
               onSignupClick={this.onSignupClick}
               onLoginClick={this.onLoginClick}
               onLogoutClick={this.onLogoutClick}
