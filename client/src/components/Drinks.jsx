@@ -15,7 +15,7 @@ class Drinks extends React.Component {
 	clickHandler(target) {
 		if (this.state.drink) {
 			this.setState({
-				drink:null
+				drink: null
 			})
 		} else {
 			this.setState({
@@ -25,7 +25,6 @@ class Drinks extends React.Component {
 	}
 
 	render() {
-		console.log("STATEEEEE", this.state.drink)
 		var settings = {
 			dots: true,
 			infinite: true,
@@ -38,9 +37,13 @@ class Drinks extends React.Component {
 			arrows: false,
 			useCSS: true
 		};
-
-
-		const overlay = this.state.drink ? <Description drink={this.state.drink} /> : <div></div>
+ 	
+		let overlay;
+		if (this.state.drink) {
+			overlay = <Description className='description' drink={this.state.drink} />;
+		} else {
+			overlay = null;
+		}
 
 		return (
 			<div>
@@ -49,7 +52,6 @@ class Drinks extends React.Component {
 						<div key={i} className='slide'>
 							<img id={drink.drinkName} src={drink.drinkImageUrl}
 								onClick={() => this.clickHandler(drink)} />
-							
 						</div>
 					)}
 				</Slider>

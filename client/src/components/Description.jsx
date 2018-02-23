@@ -9,10 +9,10 @@ class Description extends React.Component {
 		}
 	}
 
-	
+
 	render() {
 		return (
-			<div className='description' style={{ borderRadius: '5%' }} >
+			<div className='description'>
 				<p className='description_content'>{this.props.drink.drinkName}</p>
 				<br />
 				<p className='description_content'>{this.props.drink.ingredient}</p>

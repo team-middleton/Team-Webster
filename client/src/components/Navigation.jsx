@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Menu, Dropdown, Icon  } from 'semantic-ui-react';
+import { Menu, Dropdown, Icon, Popup } from 'semantic-ui-react';
 import Drop from './Dropdown.jsx'
 
 class Navigation extends React.Component {
@@ -27,20 +27,25 @@ class Navigation extends React.Component {
     }
 
     return (
-      <Menu inverted fluid widths={3}>
+      <Menu inverted fluid widths={3} color={this.props.navColor}>
         <Menu.Item>
           <Menu.Item onClick={this.props.addFavorite}>
             {heartState}
           </Menu.Item>
-          <Menu.Item>
-            <Dropdown item text='Favorites'>
-              <Dropdown.Menu>
-                {favorites}
-                <Dropdown.Divider />
-                <Dropdown.Item onClick={this.props.deleteFavorite}>Delete Current Favorite</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </Menu.Item>
+          <Dropdown item text='Favorites'>
+            <Dropdown.Menu>
+              {favorites}
+              <Dropdown.Divider />
+              <Popup
+                trigger={<Dropdown.Item onClick={this.props.deleteFavorite}>Delete Current Favorite</Dropdown.Item>}
+                content='This Favorited Combination Has Been Deleted'
+                on='click'
+                position='top left'
+                basic
+                hideOnScroll
+              />
+            </Dropdown.Menu>
+          </Dropdown>
         </Menu.Item>
         <Menu.Item>
           <Drop selectHandler = {this.props.selectHandler} category={this.props.category}/>
@@ -54,9 +59,14 @@ class Navigation extends React.Component {
               <Dropdown.Item as='a' name='signup' onClick={this.props.onSignupClick}>
                 Sign Up
               </Dropdown.Item>
-              <Dropdown.Item as='a' name='logout' onClick={this.props.onLogoutClick}>
-                Logout
-              </Dropdown.Item>
+                <Popup
+                  trigger={<Dropdown.Item as='a' name='logout' onClick={this.props.onLogoutClick}>Logout</Dropdown.Item>}
+                  content='You have logged out!'
+                  on='click'
+                  position='top right'
+                  basic
+                  hideOnScroll
+                />
             </Dropdown.Menu>
           </Dropdown>
         </Menu.Item>
