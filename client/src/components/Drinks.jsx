@@ -10,8 +10,9 @@ class Drinks extends React.Component {
 		}
 		this.clickHandler = this.clickHandler.bind(this);
 	}
-	
+
 	clickHandler(target) {
+		console.log(this.props.drinks);
 		this.setState({
 			drink: target
 		})
@@ -31,18 +32,16 @@ class Drinks extends React.Component {
 			useCSS: true
 		};
 
-		const overlay = this.state.drink? <Description drink={this.state.drink}/> : null
+		const overlay = this.state.drink ? <Description drink={this.state.drink}/> : null
 
 		return (
-			
+
 			<Slider {...settings} >
 				{this.props.drinks.map((drink, i) =>
 					<div key={i} className='slide'>
-						<img id={drink.drinkName} src={drink.drinkImageUrl} style={{ height: "850", width: "800", borderRadius: '5%' }}
-								 onClick={() => this.clickHandler(drink)}/>
+						<img id={drink.drinkName} src={drink.drinkImageUrl} onClick={() => this.clickHandler(drink)}/>
 					</div>
 				)}
-				{overlay}
 			</Slider>
 		)
 	}

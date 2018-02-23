@@ -4,18 +4,23 @@ body {
 }
 
 .player {
-  padding-left: 40px;
+  padding-left: 30px;
 }
 
 .slider {
   padding-right: 40px;
 }
 
-bod{
+bod {
   margin:0 auto;
   width:100%;
 }
-container{
-  margin:0 auto;
-  width:80%;
+
+img {
+  height: 850px;
+  width: 800px;
+}
+
+@media screen and (max-width: 699px) and (min-width: 520px) {
+
 }

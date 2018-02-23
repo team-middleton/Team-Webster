@@ -21,7 +21,8 @@ class Navigation extends React.Component {
     } else {
       favorites = this.props.listOfFavorites.map((item, i) =>
         <Dropdown.Item onClick= {() => {this.props.obtainFavorite(item)}}
-         as='a' key={i} >{'Favorite ' + (i + 1)}</Dropdown.Item>
+         as='a' key={i} >{'Favorite ' + (i + 1)}
+       </Dropdown.Item>
       )
     }
 
@@ -35,6 +36,8 @@ class Navigation extends React.Component {
             <Dropdown item text='Favorites'>
               <Dropdown.Menu>
                 {favorites}
+                <Dropdown.Divider />
+                <Dropdown.Item onClick={this.props.deleteFavorite}>Delete Current Favorite</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </Menu.Item>
