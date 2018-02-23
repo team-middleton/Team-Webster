@@ -51,23 +51,23 @@ class Signup extends React.Component {
 
   render() {
     let message;
-    if (this.state.email.indexOf('@') === -1 || this.state.email.indexOf('.') === -1) {
+    if (this.state.username.length === 0) {
+     message = <Message
+       warning
+       header='Enter a username'
+       content='Please make sure you enter a username.'
+     />;
+   }  else if (this.state.password.length < 8) {
+     message = <Message
+       warning
+       header='Enter valid password'
+       content='Please make sure you enter a valid password with at least 8 characters.'
+     />;
+   } else if (this.state.email.indexOf('@') === -1 || this.state.email.indexOf('.') === -1) {
       message = <Message
         warning
         header='Enter valid E-mail Address'
         content='Please make sure you enter a valid e-mail address.'
-      />;
-    } else if (this.state.password.length < 8) {
-      message = <Message
-        warning
-        header='Enter valid password'
-        content='Please make sure you enter a valid password with at least 8 characters.'
-      />;
-    } else if (this.state.username.length === 0) {
-      message = <Message
-        warning
-        header='Enter a username'
-        content='Please make sure you enter a username.'
       />;
     } else {
       this.setState({

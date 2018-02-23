@@ -170,6 +170,7 @@ app.get('/favorites', auth, function(req, res) {
   })
 })
 
-app.listen(3000, function () {
+const port = process.env.PORT || 3000;
+app.listen(port, function () {
   console.log('listening on port 3000!');
 });
