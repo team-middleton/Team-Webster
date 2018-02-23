@@ -20,7 +20,8 @@ class App extends React.Component {
       uriId: '37i9dQZF1DXcBWIGoYBM5M',
       favorited: false,
       listOfFavorites: [],
-      favoriteId: ''
+      favoriteId: '',
+      navColor: 'black'
   	}
     this.onLoginClick = this.onLoginClick.bind(this);
     this.onSignupClick = this.onSignupClick.bind(this);
@@ -159,15 +160,25 @@ class App extends React.Component {
 
   changeBackgroundColor() {
     if (this.state.selectedCategory === 'party') {
-      document.getElementById("navbar").style.backgroundColor = '#6e6170'
+      this.setState({
+        navColor: 'black'
+      })
     } else if (this.state.selectedCategory === 'romance') {
-      document.getElementById("navbar").style.backgroundColor = 'pink'
+      this.setState({
+        navColor: 'pink'
+      })
     } else if (this.state.selectedCategory === 'chill') {
-      document.getElementById("navbar").style.backgroundColor = '#bf920d'
+        this.setState({
+          navColor: 'blue'
+        })
     } else if (this.state.selectedCategory === 'rock') {
-      document.getElementById("navbar").style.backgroundColor = '#162613'
+        this.setState({
+          navColor: 'red'
+        })
     } else if (this.state.selectedCategory === 'classical') {
-      document.getElementById("navbar").style.backgroundColor = '#081730'
+        this.setState({
+          navColor: 'teal'
+        })
     }
   }
 
@@ -224,6 +235,7 @@ class App extends React.Component {
               listOfFavorites={this.state.listOfFavorites}
               obtainFavorite={this.obtainFavorite}
               deleteFavorite={this.deleteFavorite}
+              navColor={this.state.navColor}
             />
           </Grid.Row>
           <Grid.Row>

@@ -30,8 +30,9 @@ div.slide{
 div.description{
 	position:absolute; /* absolute position (so we can position it where we want)*/
 	bottom:0px; /* position will be on bottom */
-	left:0px;
-	width:90%;
+	left:13px;
+  bottom: 20px;
+	width:94%;
 	overflow-wrap:break-word;
 	/* styling bellow */
 	background-color:black;
@@ -45,6 +46,10 @@ p.description_content{
 	padding:10px;
 	margin:0px;
 	font-size: 20px;
+}
+
+label {
+  color: white;
 }
 
 @media screen and (max-width: 699px) and (min-width: 520px) {

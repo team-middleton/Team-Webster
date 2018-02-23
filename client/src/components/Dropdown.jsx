@@ -6,9 +6,9 @@ import { Dropdown } from 'semantic-ui-react';
 const options = [
 	{ text: 'Party', value: "party" },
 	{ text: "Relax", value: "chill" },
-	{ text: "Classical", value: "classical" },
-	{ text: "Trashed", value: "rock" },
-	{ text: "Romance", value: "romance" }
+	{ text: "Feelin' Classy", value: "classical" },
+	{ text: "Lets Get Trashed", value: "rock" },
+	{ text: "Romantic", value: "romance" }
 ]
 class Drop extends React.Component {
 	constructor(props) {

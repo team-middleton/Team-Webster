@@ -19,7 +19,7 @@ const users = `CREATE TABLE IF NOT EXISTS users (
   password VARCHAR(2000) NOT NULL,
   email VARCHAR(255) NOT NULL,
   PRIMARY KEY (id),
-  CONSTRAINT UC_users UNIQUE(username, email)
+  CONSTRAINT UC_users UNIQUE (username, email)
 )`;
 
 const favorites = `CREATE TABLE IF NOT EXISTS favorites (

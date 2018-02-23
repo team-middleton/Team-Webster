@@ -2,20 +2,19 @@ import React from 'react';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
 import App from '../index.jsx';
-import {Button, Form, Grid} from 'semantic-ui-react'
+import {Button, Form, Grid, Message} from 'semantic-ui-react'
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      error: false
     }
-
     this.login = this.login.bind(this);
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
-    this.onBackClick = this.onBackClick.bind(this);
   }
 
   login(e) {
@@ -28,6 +27,9 @@ class Login extends React.Component {
       this.props.renderFavorite();
       ReactDOM.render(<App />, document.getElementById('app'));
     }).catch((error) => {
+      this.setState({
+        error: true
+      })
       throw error;
     })
   }
@@ -40,29 +42,28 @@ class Login extends React.Component {
     this.setState({password: e.target.value})
   }
 
-  onBackClick() {
-    ReactDOM.render(<App />, document.getElementById('app'));
-  }
-
   render() {
     return (
       <Grid>
         <Grid.Row centered>
           <Grid.Column width={8}>
             <h1>Login!</h1>
-            <Form onSubmit={this.login}>
+            <Form onSubmit={this.login} error={this.state.error}>
               <Form.Field>
-                <label>Username</label>
+                <label style={{color: 'white'}}>Username</label>
                 <input type='text' placeholder='Enter Username' value={this.state.username} onChange={this.onChangeUsername}/>
               </Form.Field>
               <Form.Field>
-                <label>Password</label>
+                <label style={{color: 'white'}}>Password</label>
                 <input type='password' placeholder='Enter Password' value={this.state.password} onChange={this.onChangePassword}/>
               </Form.Field>
+              <Message
+                error
+                header='Bad Credentials'
+                content='Your username or password is incorrect. Please try again.'
+              />
               <Button type='submit'>Login!</Button>
             </Form>
-            <br />
-            <Button type='button' onClick={this.onBackClick}>Back</Button>
           </Grid.Column>
         </Grid.Row>
       </Grid>
