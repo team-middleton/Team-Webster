@@ -15,13 +15,13 @@ class Navigation extends React.Component {
     } else {
       heartState = <Icon className='heart'></Icon>
     }
-
     let favorites;
     if (this.props.listOfFavorites.length === 0) {
       favorites = <Dropdown.Item>No Favorites</Dropdown.Item>
     } else {
       favorites = this.props.listOfFavorites.map((item, i) =>
-        <Dropdown.Item as='a' key={i}>{'Favorite ' + (i + 1)}</Dropdown.Item>
+        <Dropdown.Item onClick= {() => {this.props.obtainFavorite(item)}}
+         as='a' key={i} >{'Favorite ' + (i + 1)}</Dropdown.Item>
       )
     }
 

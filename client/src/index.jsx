@@ -30,6 +30,7 @@ class App extends React.Component {
     this.addFavorite = this.addFavorite.bind(this);
     this.onFavorite = this.onFavorite.bind(this);
     this.renderFavorite = this.renderFavorite.bind(this);
+    this.obtainFavorite = this.obtainFavorite.bind(this);
   }
 
   getAlcohols() {
@@ -139,6 +140,13 @@ class App extends React.Component {
     })
   }
 
+obtainFavorite(userFaves){
+    this.setState ({
+    drinks: JSON.parse(userFaves.drinks),
+    uriId: userFaves.music
+  })
+}
+
   componentDidMount() {
     this.renderFavorite();
   }
@@ -180,6 +188,7 @@ class App extends React.Component {
               favorited={this.state.favorited}
               renderFavorite={this.renderFavorite}
               listOfFavorites={this.state.listOfFavorites}
+              obtainFavorite={this.obtainFavorite}
             />
           </Grid.Row>
           <Grid.Row>
