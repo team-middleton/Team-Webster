@@ -3,21 +3,21 @@ import axios from 'axios';
 import Drinks from './Drinks.jsx'
 import { Dropdown } from 'semantic-ui-react';
 
-	const options =	[
-				{text: 'Party', value: "party"},
-				{text: "Relax", value: "chill"},
-				{text: "Classical", value: "classical"},
-				{text: "Trashed", value: "rock"},
-				{text: "Romance", value: "romance"}
-			]
+const options = [
+	{ text: 'Party', value: "party" },
+	{ text: "Relax", value: "chill" },
+	{ text: "Classical", value: "classical" },
+	{ text: "Trashed", value: "rock" },
+	{ text: "Romance", value: "romance" }
+]
 class Drop extends React.Component {
-	constructor (props) {
+	constructor(props) {
 		super(props)
 	}
 
-	render () {
+	render() {
 		return (
-				<Dropdown placeholder="Choose Mood" options= {options}  value={this.props.category} onChange={(e, {value}) => (this.props.selectHandler(value))}/>
+			<Dropdown placeholder="Choose Mood" options={options} value={this.props.category} onChange={(e, { value }) => (this.props.selectHandler(value))} />
 		)
 	}
 }

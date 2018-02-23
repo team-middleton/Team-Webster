@@ -8,13 +8,13 @@ import Signup from './components/Signup.jsx';
 import Login from './components/Login.jsx';
 import Navigation from './components/Navigation.jsx'
 import SpotifyPlayer from './components/Playlist.jsx';
-import {Message, Grid} from 'semantic-ui-react'
+import { Message, Grid } from 'semantic-ui-react'
 
 class App extends React.Component {
   constructor(props) {
-  	super(props)
-  	this.state = {
-			selectedCategory: '',
+    super(props)
+    this.state = {
+      selectedCategory: '',
       drinks: [],
       alcohols: [],
       uriId: '37i9dQZF1DXcBWIGoYBM5M',
@@ -33,9 +33,11 @@ class App extends React.Component {
     this.renderFavorite = this.renderFavorite.bind(this);
     this.obtainFavorite = this.obtainFavorite.bind(this);
     this.deleteFavorite = this.deleteFavorite.bind(this);
+    this.changeBackgroundColor = this.changeBackgroundColor.bind(this);
   }
 
   getAlcohols() {
+    this.changeBackgroundColor();
 		axios.post('/drinks', {alcohols: this.state.alcohols})
 		.then((response) => {
       console.log("This is response data", response.data);
@@ -47,49 +49,49 @@ class App extends React.Component {
 			throw error;
 		})
 
-    axios.post('/playlist', {category: this.state.selectedCategory})
-    .then((response) => {
-      this.setState({
-        uriId: response.data.id
+    axios.post('/playlist', { category: this.state.selectedCategory })
+      .then((response) => {
+        this.setState({
+          uriId: response.data.id
+        })
       })
-    })
-    .catch((error) => {
-      throw error
-    })
-	}
+      .catch((error) => {
+        throw error
+      })
+  }
 
   settingAlcohols(category) {
-		if (category === 'party') {
-			this.setState({
-				alcohols: ['tequila', 'vodka', 'rum', 'beer']
-			}, this.getAlcohols)
-		} else if (category === 'classical') {
-			this.setState({
-				alcohols: ['white+wine', 'red+wine', 'whiskey', 'gin']
-			}, this.getAlcohols)
-		} else if (category === 'romance') {
-			this.setState({
-				alcohols: ['red+wine', 'white+wine', 'gin']
-			}, this.getAlcohols)
-		} else if (category === 'chill') {
-			this.setState({
-				alcohols: ['whiskey', 'red+wine', 'beer']
-			}, this.getAlcohols)
-		} else if (category === 'rock') {
-			this.setState({
-				alcohols: ['whiskey', 'tequila', 'vodka', 'rum', 'gin']
-			}, this.getAlcohols)
-		};
-	}
+    if (category === 'party') {
+      this.setState({
+        alcohols: ['tequila', 'vodka', 'rum', 'beer']
+      }, this.getAlcohols)
+    } else if (category === 'classical') {
+      this.setState({
+        alcohols: ['white+wine', 'red+wine', 'whiskey', 'gin']
+      }, this.getAlcohols)
+    } else if (category === 'romance') {
+      this.setState({
+        alcohols: ['red+wine', 'white+wine', 'gin']
+      }, this.getAlcohols)
+    } else if (category === 'chill') {
+      this.setState({
+        alcohols: ['whiskey', 'red+wine', 'beer']
+      }, this.getAlcohols)
+    } else if (category === 'rock') {
+      this.setState({
+        alcohols: ['whiskey', 'tequila', 'vodka', 'rum', 'gin']
+      }, this.getAlcohols)
+    };
+  }
 
   changeCategory(event) {
-		this.setState({
-			selectedCategory: event
-		}, this.settingAlcohols(event))
-	}
+    this.setState({
+      selectedCategory: event
+    }, this.settingAlcohols(event))
+  }
 
   onLoginClick() {
-    ReactDOM.render(<Login renderFavorite={this.renderFavorite}/>, document.getElementById('app'));
+    ReactDOM.render(<Login renderFavorite={this.renderFavorite} />, document.getElementById('app'));
   }
 
   onSignupClick() {
@@ -98,15 +100,15 @@ class App extends React.Component {
 
   onLogoutClick() {
     axios.post('/logout')
-    .then(() => {
-      console.log("Logged Out!");
-      this.setState({
-        listOfFavorites: []
+      .then(() => {
+        console.log("Logged Out!");
+        this.setState({
+          listOfFavorites: []
+        })
       })
-    })
-    .catch((error) => {
-      console.log("Failed to log out", error);
-    })
+      .catch((error) => {
+        console.log("Failed to log out", error);
+      })
   }
 
   addFavorite() {
@@ -119,28 +121,28 @@ class App extends React.Component {
   }
 
   onFavorite() {
-    axios.post('/favorites', {drinks: this.state.drinks, playlist: this.state.uriId})
-    .then(() => {
-      this.setState({
-        favorited: !this.state.favorited
-      }, this.renderFavorite);
-    })
-    .catch((error) => {
-      throw error;
-    })
+    axios.post('/favorites', { drinks: this.state.drinks, playlist: this.state.uriId })
+      .then(() => {
+        this.setState({
+          favorited: !this.state.favorited
+        }, this.renderFavorite);
+      })
+      .catch((error) => {
+        throw error;
+      })
   }
 
   renderFavorite() {
     axios.get('/favorites')
-    .then((results) => {
-      console.log("These are my results from renderFavorite", results.data);
-      this.setState({
-        listOfFavorites: results.data
-      });
-    })
-    .catch((error) => {
-      throw error;
-    })
+      .then((results) => {
+        console.log("These are my results from renderFavorite", results.data);
+        this.setState({
+          listOfFavorites: results.data
+        });
+      })
+      .catch((error) => {
+        throw error;
+      })
   }
 
   obtainFavorite(userFaves){
@@ -153,6 +155,20 @@ class App extends React.Component {
 
   componentDidMount() {
     this.renderFavorite();
+  }
+
+  changeBackgroundColor() {
+    if (this.state.selectedCategory === 'party') {
+      document.body.style.backgroundColor = '#6e6170'
+    } else if (this.state.selectedCategory === 'romance') {
+      document.body.style.backgroundColor = 'pink'
+    } else if (this.state.selectedCategory === 'chill') {
+      document.body.style.backgroundColor = '#bf920d'
+    } else if (this.state.selectedCategory === 'rock') {
+      document.body.style.backgroundColor = '#162613'
+    } else if (this.state.selectedCategory === 'classical') {
+      document.body.style.backgroundColor = '#081730'
+    }
   }
 
   deleteFavorite() {
@@ -169,27 +185,28 @@ class App extends React.Component {
 
   render () {
     let rightSide = null;
-    if(this.state.drinks.length === 0) {
+    if (this.state.drinks.length === 0) {
       rightSide = <Message size='massive' compact color='black'>
         <Message.Header>
           Welcome to our App!
         </Message.Header>
-        <br/>
+        <br />
         <Message.Item>
           Simply choose a <b>mood</b> up top and we will set the tone for you.
         </Message.Item>
-        <br/>
+        <br />
         <Message.Item>
           We have chosen what we think is the best playlist and drink pairings.
         </Message.Item>
-        <br/>
+        <br />
         <Message.Item>
           Enjoy!
         </Message.Item>
       </Message>;
     } else {
-      rightSide = <Drinks drinks={this.state.drinks}/>;
+      rightSide = <Drinks drinks={this.state.drinks} />;
     }
+
   	return (
         <Grid stackable>
           <Grid.Row columns={16} centered>

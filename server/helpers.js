@@ -74,7 +74,7 @@ helpers.filterIngredients = function(obj) {
   var ingredientMeasurements = [];
   for (var i = 9; i < array.length - 1; i++) {
     if (obj[array[i]] !== null && obj[array[i]] !== '\r\n' && obj[array[i]].length > 1) {
-      ingredientMeasurements.push(obj[array[i]])
+      ingredientMeasurements.push(obj[array[i]] + ', ')
     }
   }
   return ingredientMeasurements;

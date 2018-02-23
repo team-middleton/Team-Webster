@@ -6,19 +6,26 @@ class Drinks extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			drink : {}
+			drink: {}
+			//show: false
 		}
 		this.clickHandler = this.clickHandler.bind(this);
 	}
 
 	clickHandler(target) {
-		console.log(this.props.drinks);
-		this.setState({
-			drink: target
-		})
+		if (this.state.drink) {
+			this.setState({
+				drink:null
+			})
+		} else {
+			this.setState({
+				drink: target
+			})
+		}
 	}
 
 	render() {
+		console.log("STATEEEEE", this.state.drink)
 		var settings = {
 			dots: true,
 			infinite: true,
@@ -32,17 +39,23 @@ class Drinks extends React.Component {
 			useCSS: true
 		};
 
-		const overlay = this.state.drink ? <Description drink={this.state.drink}/> : null
+
+		const overlay = this.state.drink ? <Description drink={this.state.drink} /> : <div></div>
 
 		return (
-
-			<Slider {...settings} >
-				{this.props.drinks.map((drink, i) =>
-					<div key={i} className='slide'>
-						<img id={drink.drinkName} src={drink.drinkImageUrl} onClick={() => this.clickHandler(drink)}/>
-					</div>
-				)}
-			</Slider>
+			<div>
+				<Slider {...settings}>
+					{this.props.drinks.map((drink, i) =>
+						<div key={i} className='slide'>
+							<img id={drink.drinkName} src={drink.drinkImageUrl}
+								onClick={() => this.clickHandler(drink)} />
+							
+						</div>
+					)}
+				</Slider>
+				{this.state.show ? <Description drink={this.state.drink} show={this.state.show}/> : <div></div>}
+				{overlay}
+			</div>
 		)
 	}
 }
