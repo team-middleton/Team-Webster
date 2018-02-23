@@ -5,12 +5,12 @@ const SpotifyWebApi = require('spotify-web-api-node');
 let helpers = {};
 
 let config = {
- headers: {'Authorization': `token ${process.env.BEER_TOKEN}`}
+ headers: {'Authorization': `token ${process.env.BEER_TOKEN || 'MDpmNmRjZGY5Yy0xNjVhLTExZTgtYmQ3MC00M2Y5NGU2MGJhOTg6YzVoQUVxOXg5ajBiOUUwcUFPb2pBZVNNUXVJYzZYdExvZDF5'}`}
 };
 
 var spotifyApi = new SpotifyWebApi({
-  clientId : process.env.SPOTIFY_CID,
-  clientSecret : process.env.SPOTIFY_SECRET,
+  clientId : process.env.SPOTIFY_CID || '2464c289439646d5bce72dcce92be15f',
+  clientSecret : process.env.SPOTIFY_SECRET || '7039c64ea77940a0847d0cc619a28f3c',
   redirectUri : 'https://api.spotify.com/'
 });
 
