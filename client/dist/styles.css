@@ -1,0 +1,57 @@
+body {
+  background-color: #1f1f1f;
+  color: white;
+}
+
+.player {
+  padding-left: 30px;
+}
+
+.slider {
+  padding-right: 40px;
+}
+
+bod {
+  margin:0 auto;
+  width:100%;
+}
+
+img {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	opacity: 0.75;
+  height: 850px;
+  width: 800px;
+}
+
+div.slide{
+	float:left; /* important */
+	position:relative; /* important(so we can absolutely position the description div */
+}
+div.description{
+	position:absolute; /* absolute position (so we can position it where we want)*/
+	bottom:0px; /* position will be on bottom */
+	left:13px;
+  bottom: 20px;
+	width:94%;
+	overflow-wrap:break-word;
+	/* styling bellow */
+	background-color:black;
+	color:white;
+	opacity:0.4; /* transparency */
+	filter:alpha(opacity=60); /* IE transparency */
+	ont-size: 20px
+}
+p.description_content{
+	overflow-wrap: break-word;
+	padding:10px;
+	margin:0px;
+	font-size: 20px;
+}
+
+label {
+  color: white;
+}
+
+@media screen and (max-width: 699px) and (min-width: 520px) {
+
+}
