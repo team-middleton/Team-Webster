@@ -73,7 +73,8 @@ app.post('/drinks', function (req, res) {
         for (var i = 0; i < data.length; i++) {
           var beerOrWine = {
             drinkName: data[i].name,
-            drinkImageUrl: data[i].image_thumb_url
+            drinkImageUrl: data[i].image_thumb_url,
+            ingredient: ['N/A']
           }
           drinksToClient.push(beerOrWine);
         }
