@@ -37,7 +37,8 @@ class Drinks extends React.Component {
 			arrows: false,
 			useCSS: true
 		};
-
+		
+		// This conditionally renders the desciption of each drink.
 		const overlay = this.state.drink ? <Description drink={this.state.drink} /> : null
 
 		return (
