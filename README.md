@@ -1,11 +1,20 @@
-# custom_starter
-This is a custom boilerplate for react and node with express
+#README Team Webster Drinkify 
 
-First run npm install
-make sure you have webpack installed (npm install -g webpack)
-then run these two commands in order:
-npm run react-dev 
-wait for it to compile 
-npm run server-dev
+https://drinkify.herokuapp.com/
 
-start coding
+### Step 1
+Clone down the Repo.
+
+### Step 2
+Please run npm install to install all the modules required to run this application.
+
+### Step 3
+Update the database file to use "Localhost" instead of using Amazon RDS.
+
+### Step 4
+Open up the terminal.
+
+Run the following lines to start the server and to build the webpack.
+
+- npm run server-dev
+- npm run react-dev
