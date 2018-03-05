@@ -50,6 +50,7 @@ helpers.getBeer = function (ingredient, cb) {
 
 }
 
+//Fetches cocktails based on "spirits (vodka, gin, etc.)" and returns cocktails.
 helpers.getCocktails = function(ingredient) {
   const options = {
     url: 'http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + ingredient,

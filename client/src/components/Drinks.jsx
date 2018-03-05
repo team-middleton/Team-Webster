@@ -2,12 +2,12 @@ import React from 'react';
 import Slider from 'react-slick';
 import Description from './Description.jsx'
 
+// This component renders the drink slideshow
 class Drinks extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			drink: {}
-			//show: false
 		}
 		this.clickHandler = this.clickHandler.bind(this);
 	}
