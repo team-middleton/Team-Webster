@@ -9,12 +9,17 @@ class Navigation extends React.Component {
   }
 
   render() {
+    
+    //This conditionally renders the heart icon to go from empty to a filled in a heart.
     let heartState;
     if (this.props.favorited === false) {
       heartState = <Icon className='empty heart'></Icon>
     } else {
       heartState = <Icon className='heart'></Icon>
     }
+    
+    //This renders the list of favorites. If there are no favorites then the drop down shows "No Favorites"
+    //Else it will populate the favorites dropdown with the list of favorites stored in the database.
     let favorites;
     if (this.props.listOfFavorites.length === 0) {
       favorites = <Dropdown.Item>No Favorites</Dropdown.Item>
