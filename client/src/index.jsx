@@ -36,7 +36,8 @@ class App extends React.Component {
     this.deleteFavorite = this.deleteFavorite.bind(this);
     this.changeBackgroundColor = this.changeBackgroundColor.bind(this);
   }
-
+//this function, make requests to APIs for cocktails, beer, and wine, and playlist,\
+//as well as change the background color of the nav bar.
   getAlcohols() {
     this.changeBackgroundColor();
 		axios.post('/drinks', {alcohols: this.state.alcohols})
@@ -60,7 +61,8 @@ class App extends React.Component {
         throw error
       })
   }
-
+//For each category, we predetermine a list of spirits together with wine or beer and set state,
+//then call the function getAlcohols above which makes request to the APIs for cocktails, beer, and wine, as well as playlist
   settingAlcohols(category) {
     if (category === 'party') {
       this.setState({
@@ -84,7 +86,8 @@ class App extends React.Component {
       }, this.getAlcohols)
     };
   }
-
+  //when the category is change and state is set,
+  //call the settingAlcohots function above
   changeCategory(event) {
     this.setState({
       selectedCategory: event
@@ -111,7 +114,7 @@ class App extends React.Component {
         console.log("Failed to log out", error);
       })
   }
-
+  //adding favorites drinks and playlist, call the onFavorite function below
   addFavorite() {
     console.log(this.state.favorited);
     if (this.state.favorited === false) {
@@ -121,6 +124,7 @@ class App extends React.Component {
     }
   }
 
+  //this function make a post request to save favorited drinks and playlist
   onFavorite() {
     axios.post('/favorites', { drinks: this.state.drinks, playlist: this.state.uriId })
       .then(() => {
@@ -132,7 +136,7 @@ class App extends React.Component {
         throw error;
       })
   }
-
+//this function make request to get a list of saved playlists and drinks from the database
   renderFavorite() {
     axios.get('/favorites')
       .then((results) => {
@@ -145,7 +149,7 @@ class App extends React.Component {
         throw error;
       })
   }
-
+  //this is render the selected favorites
   obtainFavorite(userFaves){
       this.setState ({
       drinks: JSON.parse(userFaves.drinks),
@@ -157,7 +161,7 @@ class App extends React.Component {
   componentDidMount() {
     this.renderFavorite();
   }
-
+  //this change the background color of the nav bar based on the selected mood
   changeBackgroundColor() {
     if (this.state.selectedCategory === 'party') {
       this.setState({
@@ -181,7 +185,7 @@ class App extends React.Component {
         })
     }
   }
-
+  //deleting favorites
   deleteFavorite() {
     if (this.state.favoriteId !== '') {
       axios.post('/delete', {favId: this.state.favoriteId})
@@ -195,6 +199,7 @@ class App extends React.Component {
   }
 
   render () {
+    //place holder for when the drinks are not rendered
     let rightSide = null;
     if (this.state.drinks.length === 0) {
       rightSide = <Message size='massive' compact color='black'>

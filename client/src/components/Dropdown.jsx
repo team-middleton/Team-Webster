@@ -10,6 +10,10 @@ const options = [
 	{ text: "Lets Get Trashed", value: "rock" },
 	{ text: "Romantic", value: "romance" }
 ]
+
+// This component is the "Category" dropdown list which is the main bread and butter of our app.
+//This "Moods" selected from this category correlate with the calls to Spotify and to the Drink APIs
+
 class Drop extends React.Component {
 	constructor(props) {
 		super(props)
