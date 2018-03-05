@@ -1,5 +1,6 @@
 import React from 'react';
 
+// This component renders the descriptions of each drink.
 
 class Description extends React.Component {
 	constructor(props) {
@@ -8,7 +9,6 @@ class Description extends React.Component {
 			show: true
 		}
 	}
-
 
 	render() {
 		return (

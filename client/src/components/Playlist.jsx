@@ -12,7 +12,7 @@ const sizePresets = {
     height: 80,
   },
 };
-
+//This renders the Spotify playlist component
 class SpotifyPlayer extends Component {
 
   render() {
