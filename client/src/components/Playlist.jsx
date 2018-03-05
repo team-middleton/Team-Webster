@@ -12,7 +12,9 @@ const sizePresets = {
     height: 80,
   },
 };
+
 //This renders the Spotify playlist component
+//In order for the playlist to render it takes in a "URI" which is a link that is given by the spotify API.
 class SpotifyPlayer extends Component {
 
   render() {
