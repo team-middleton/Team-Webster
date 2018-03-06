@@ -5,6 +5,7 @@ var db = require('../database/database.js');
 var bcrypt = require('bcrypt');
 var helpers = require('./helpers.js').helpers;
 var session = require('express-session');
+var mapHelpers = require('./mapHelpers.js');
 
 const app = express();
 
@@ -189,6 +190,11 @@ app.get('/favorites', auth, function(req, res) {
     }
   })
 })
+
+//respond with map of yelp places to go based on category chosen
+app.get('/map', (req, res) => {
+  //mapHelpers.getMap
+});
 
 const port = process.env.PORT || 3000;
 app.listen(port, function () {
