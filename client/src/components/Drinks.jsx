@@ -41,6 +41,7 @@ class Drinks extends React.Component {
 		// This conditionally renders the desciption of each drink.
 		const overlay = this.state.drink ? <Description drink={this.state.drink} /> : null
 
+		console.log('drinks ', this.props.drinks);
 		return (
 			<div>
 				<Slider {...settings}>

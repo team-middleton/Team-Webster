@@ -244,13 +244,32 @@ class App extends React.Component {
             />
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column width={8}>
+            <Grid.Column width={4}>
               <div style={{margin:'0 auto', overflow:'auto'}}>
                 <SpotifyPlayer uri={'spotify:user:spotify:playlist:' + this.state.uriId} size={{width: 800, height: 850}} theme="black" view="list" />
               </div>
             </Grid.Column>
-            <Grid.Column width={8}>
+            <Grid.Column width={6}>
+            <Grid.Row> 
+              <h1> map will go in this row. will need to work on sizing
+                
+                
+                
+                
+                
+                
+                 </h1>
+              </Grid.Row>
+              <Grid.Row> 
               {rightSide}
+              </Grid.Row>
+            </Grid.Column>
+            <Grid.Column width={6}>
+              <Message>
+                  <Message.Item>
+                      yo
+                  </Message.Item> 
+                </ Message>
             </Grid.Column>
           </Grid.Row>
         </Grid>
