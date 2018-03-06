@@ -9,6 +9,7 @@ import Login from './components/Login.jsx';
 import Navigation from './components/Navigation.jsx'
 import SpotifyPlayer from './components/Playlist.jsx';
 import { Message, Grid } from 'semantic-ui-react'
+import YelpMap from './components/Map.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -21,7 +22,9 @@ class App extends React.Component {
       favorited: false,
       listOfFavorites: [],
       favoriteId: '',
-      navColor: 'black'
+      navColor: 'black',
+      lat: 40.7505788,
+      long: -73.9765793
   	}
     this.onLoginClick = this.onLoginClick.bind(this);
     this.onSignupClick = this.onSignupClick.bind(this);
@@ -35,6 +38,7 @@ class App extends React.Component {
     this.obtainFavorite = this.obtainFavorite.bind(this);
     this.deleteFavorite = this.deleteFavorite.bind(this);
     this.changeBackgroundColor = this.changeBackgroundColor.bind(this);
+    this.getPosition = this.getPosition.bind(this);
   }
 //this function, make requests to APIs for cocktails, beer, and wine, and playlist,\
 //as well as change the background color of the nav bar.
@@ -197,6 +201,15 @@ class App extends React.Component {
       })
     }
   }
+  
+  getPosition() {
+    navigator.geolocation.getCurrentPosition((pos) => {
+      console.log('success', pos.coords);
+      this.setState({ lat: pos.coords.latitude, long: pos.coords.longitude });
+    }, (error) => {
+      console.log('error', error);  
+    });
+  }
 
   render () {
     //place holder for when the drinks are not rendered
@@ -252,12 +265,12 @@ class App extends React.Component {
             <Grid.Column width={6}>
             <Grid.Row> 
               <h1> map will go in this row. will need to work on sizing
-                
-                
-                
-                
-                
-                
+                <YelpMap 
+                  getPosition={this.getPosition}
+                  category={this.state.selectedCategory}
+                  lat={this.state.lat}
+                  long={this.state.long}
+                />          
                  </h1>
               </Grid.Row>
               <Grid.Row> 
