@@ -12,7 +12,7 @@ ticketMasterMethods.createGeoPoint = function (lat, long) {
 
 ticketMasterMethods.getEventsFromTicketMaster = function(keyword, lat, long, callback) {
     var geoHash = this.createGeoPoint(lat, long);
-    var url = `https://app.ticketmaster.com/discovery/v2/events.json?geoPoint=${geoHash}&radius=20&unit=miles&keyword=${keyword}&size=10&classificationName=music&sort=date,desc&apikey=GrOOwv0SlHcwV6DctS7F86eWwXRdJDOJ`;
+    var url = `https://app.ticketmaster.com/discovery/v2/events.json?geoPoint=${geoHash}&radius=20&unit=miles&keyword=${keyword}&size=10&classificationName=music&sort=date,asc&apikey=GrOOwv0SlHcwV6DctS7F86eWwXRdJDOJ`;
     axios.get(url)
     .then((res)=> {
         var event = res.data._embedded.events;
@@ -31,10 +31,11 @@ ticketMasterMethods.getEventsFromTicketMaster = function(keyword, lat, long, cal
             eventData.keyword = keyword;
             eventData.venue = event._embedded.venues[0].name;
             eventData.type = event.type;
+            eventData.imageUrl = event.images[1].url
             eventsArray.push(eventData);
         })
         // callback('yo')
-        // callback(res.data._embedded.events[0])
+        // callback(res.data._embedded.events[0].images)
         callback(eventsArray)
     })
 }

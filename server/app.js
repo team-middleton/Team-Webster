@@ -19,7 +19,7 @@ const io = socket(
 
 io.on('connection', (socket) => {
   socket.on('SEND_MESSAGE', function(data) {
-    console.log('server received data', data)
+    // console.log('server received data', data)
     io.emit('RECEIVE_MESSAGE', data)
   })
 })
@@ -50,7 +50,7 @@ let auth = function(req, res, next) {
 };
 
 app.get('/user', function(req, res) {
-  console.log('user session', req.session.user)
+  // console.log('user session', req.session.user)
   res.status(200).send(req.session.user)
 })
 
@@ -227,7 +227,7 @@ app.get('/upcomingEvents', function(req, res) {
   }
   console.log('req in server ', searchedCategory)
   ticketMasterHelpers.getEventsFromTicketMaster(searchedCategory, 40.755603, -73.984931, function(response){
-    console.log('data passed back to server ' , response)
+    // console.log('data passed back to server ' , response)
     res.send(response)
     // res.sendStatus(201);
   })

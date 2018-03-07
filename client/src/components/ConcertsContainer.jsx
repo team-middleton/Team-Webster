@@ -10,9 +10,15 @@ class ConcertsContainer extends React.Component{
         }
     }
     render() {
+        if(this.props.concerts.length) {
+            var concertsTitle = <h5 className="concertListTitle" > Related concerts in your area </h5>
+        } else {
+            var concertsTitle = <div></div>
+        }
         return(
-        <div>
+        <div className = "concertList">
             <Container> 
+                {concertsTitle}
                 {this.props.concerts.map((concert, i) => {
                     return <ConcertItem concert={concert} key={i}/>
                 })}

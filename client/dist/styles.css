@@ -7,6 +7,45 @@ body {
   padding-left: 30px;
 }
 
+.concertList {
+	padding-left: 50px;
+	height: 380px;
+}
+.concertListTitle {
+	font-size: 15px;
+	border-bottom: 1px solid rgb(40, 40, 40);
+	margin-bottom: 2px;
+}
+
+.concertGrid {
+	border-bottom: 1px solid rgb(40, 40, 40);
+	border-left: 1px solid rgb(40, 40, 40);
+	margin: 0;
+}
+.concertTextColumn {
+	margin-top: 10px;
+}
+
+.concertImage {
+	margin-top: 10px;
+	height: 65px;
+	width: 70px;
+	border-radius: 50%
+}
+
+.concertName {
+	font-size: 14px;
+	color: #fff;
+}
+.concertName:hover {
+	color: rgba(191,191,191,.87);
+}
+.concertDescription {
+	font-size: 12px;
+	color: rgba(191,191,191,.87);
+}
+
+
 .slider {
   padding-right: 40px;
 }
@@ -46,9 +85,8 @@ p.description_content{
 label {
   color: white;
 }
-.concertImage {
-	height: 75px
-}
+
+
 
 @media screen and (max-width: 699px) and (min-width: 520px) {
 
