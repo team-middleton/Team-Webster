@@ -1,5 +1,5 @@
 body {
-  background-color: #1f1f1f;
+  background-color: #282828;
 	color: white;
 }
 
@@ -135,13 +135,12 @@ label {
 
 #messages li {
 	padding: 5px 10px;
-	color: black;
 }
 
 #messages li:nth-child(odd) {
-	background: #eee;
+	background: #1f1f1f;
 }
 
 #messages li:nth-child(even) {
-	background: white;
+	background: #1b1c1d;
 }
