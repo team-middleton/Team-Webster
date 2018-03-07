@@ -6,6 +6,7 @@ var bcrypt = require('bcrypt');
 var helpers = require('./helpers.js').helpers;
 var session = require('express-session');
 var mapHelpers = require('./mapHelpers.js');
+var ticketMasterHelpers = require('./ticketMasterHelpers');
 
 const app = express();
 
@@ -195,6 +196,14 @@ app.get('/favorites', auth, function(req, res) {
 app.get('/map', (req, res) => {
   //mapHelpers.getMap
 });
+// ticketMasterHelpers.createGeoPoint(40.755603, -73.984931);
+
+app.get('/upcomingEvents', function(req, res) {
+  ticketMasterHelpers.getEventsFromTicketMaster('classical', 40.755603, -73.984931, function(response){
+    console.log('data passed back to server ' , response)
+    res.sendStatus(201);
+  })
+})
 
 const port = process.env.PORT || 3000;
 app.listen(port, function () {
