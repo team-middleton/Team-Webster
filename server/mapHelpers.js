@@ -9,11 +9,21 @@ const paramsObj = {
   romance: 'wine_bars'
 };
 
-const getYelp = function(category, lat, long) {
+const yelpAPI = 'x7T5oUXhDkDfOk2mt1wfFEwTswpx3XjIRpx_KzWdAiw-x4APiOyPlSzgDIZG-Epm7COaSs8xFxyEL56ISBKif8QjhOeepMK-8ZiRJUtoCFHWKxgGp02NXaOxAY2MWnYx';
+
+// default location: lat: 40.7505788, long: -73.9765793
+
+// function to process data from yelp
+const yelpData = function() {
   
+};
+
+
+const getYelp = function(category, lat, long, callback) {
+  console.log('category', category)
   axios.get('https://api.yelp.com/v3/businesses/search', {
   	headers: {
-      Authorization: 'Bearer x7T5oUXhDkDfOk2mt1wfFEwTswpx3XjIRpx_KzWdAiw-x4APiOyPlSzgDIZG-Epm7COaSs8xFxyEL56ISBKif8QjhOeepMK-8ZiRJUtoCFHWKxgGp02NXaOxAY2MWnYx'
+      Authorization: `Bearer ${yelpAPI}`
   	},
     params: {
       categories: paramsObj[category],
@@ -23,16 +33,16 @@ const getYelp = function(category, lat, long) {
     }
   })
   .then((res) => {
-  	console.log(response)
+  	//console.log(res.data.businesses)
+  	callback(res.data.businesses)
+
   })
   .catch((err) => { console.log(err); });
 }
 
-// yelpAPI: 'x7T5oUXhDkDfOk2mt1wfFEwTswpx3XjIRpx_KzWdAiw-x4APiOyPlSzgDIZG-Epm7COaSs8xFxyEL56ISBKif8QjhOeepMK-8ZiRJUtoCFHWKxgGp02NXaOxAY2MWnYx'
-// location: lat: 40.7505788, long: -73.9765793
-
 const getMap = function(category, lat, long, callback) {
-  //getYelp(category, lat, long);
+  console.log('getMap', lat, long)
+  getYelp(category, lat, long);
 }
 
-module.exports.getMap = getMap;
+module.exports.getYelp = getYelp;
