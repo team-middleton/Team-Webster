@@ -8,10 +8,9 @@
   "description": "React Starter",
   "main": "app.js",
   "scripts": {
-    "start": "node server/app.js",
+    "start": "npm i -g webpack && webpack && node server/index.js",
     "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon server/app.js",
-    "build": "webpack"
+    "server-dev": "nodemon server/app.js"
   },
   "author": "Team Webster",
   "license": "MIT",
