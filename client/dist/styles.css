@@ -1,6 +1,6 @@
 body {
   background-color: #1f1f1f;
-  color: white;
+	color: white;
 }
 
 .player {
@@ -39,7 +39,7 @@ div.description{
 	color:white;
 	opacity:0.4; /* transparency */
 	filter:alpha(opacity=60); /* IE transparency */
-	ont-size: 20px
+	font-size: 20px
 }
 p.description_content{
 	overflow-wrap: break-word;
@@ -54,4 +54,57 @@ label {
 
 @media screen and (max-width: 699px) and (min-width: 520px) {
 
+}
+
+#chat {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font: 13pt Helvetica, Arial;
+}
+
+#chat form {
+	padding: 3px; 
+	position: fixed; 
+	bottom: .5%; 
+	width: 100%;
+}
+
+#chat form input {
+	border: 0; 
+	padding: 10px; 
+	width: 25%; 
+	margin-right: .5%;
+	margin-left: .5%;
+}
+
+#chat form button {
+	width: 10%; 
+	background: lightgrey; 
+	border: none; 
+	padding: 10px;
+}
+
+#messages {
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0;
+	position: fixed;
+	min-width: 100%;
+	max-height: 600px;
+	overflow: scroll;
+	bottom: 50px;
+}
+
+#messages li {
+	padding: 5px 10px;
+	color: black;
+}
+
+#messages li:nth-child(odd) {
+	background: #eee;
+}
+
+#messages li:nth-child(even) {
+	background: white;
 }
