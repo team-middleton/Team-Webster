@@ -8,6 +8,7 @@ import Signup from './components/Signup.jsx';
 import Login from './components/Login.jsx';
 import Navigation from './components/Navigation.jsx'
 import SpotifyPlayer from './components/Playlist.jsx';
+import Chat from './components/Chat.jsx'
 import { Message, Grid } from 'semantic-ui-react'
 import YelpMap from './components/Map.jsx'
 
@@ -25,8 +26,9 @@ class App extends React.Component {
       navColor: 'black',
       lat: 40.7505788,
       long: -73.9765793,
-      concerts: []
-  	}
+      concerts: [],
+      user: null
+    }
     this.onLoginClick = this.onLoginClick.bind(this);
     this.onSignupClick = this.onSignupClick.bind(this);
     this.onLogoutClick = this.onLogoutClick.bind(this);
@@ -184,6 +186,15 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log('component did mount')
+    axios.get('/user')
+    .then((response) => {
+      console.log('user: ', response.data)
+      this.setState({user: response.data})
+    })
+    .catch((err) => {
+      console.error(err)
+    })
     this.renderFavorite();
   }
   //this change the background color of the nav bar based on the selected mood
@@ -256,7 +267,7 @@ class App extends React.Component {
     } else {
       rightSide = <Drinks drinks={this.state.drinks} />;
     }
-
+    console.log('app rendered')
   	return (
         <Grid stackable>
           <Grid.Row columns={16} centered>
@@ -290,6 +301,7 @@ class App extends React.Component {
                 </Message.Item> 
               </Grid.Row>
             </Grid.Column>
+<<<<<<< HEAD
             <Grid.Column width={5}>
             <Grid.Row> 
               <h1> map will go in this row. will need to work on sizing
@@ -300,17 +312,18 @@ class App extends React.Component {
                   long={this.state.long}
                 />          
                  </h1>
+=======
+            <Grid.Column width={6}>
+              <Grid.Row> 
+                <h1> map will go in this row. will need to work on sizing</h1>
+>>>>>>> Implement socket.io chat room
               </Grid.Row>
               <Grid.Row> 
-              {rightSide}
+                {rightSide}
               </Grid.Row>
             </Grid.Column>
             <Grid.Column width={6}>
-              <Message>
-                  <Message.Item>
-                      yo
-                  </Message.Item> 
-                </ Message>
+              <Chat mood={this.state.selectedCategory} user={this.state.user}/>
             </Grid.Column>
           </Grid.Row>
         </Grid>
