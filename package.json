@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "engines": {
     "node": "8.9.4",
-    "npmm": "5.6.0"
+    "npm": "5.6.0"
   },
   "description": "React Starter",
   "main": "app.js",
