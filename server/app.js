@@ -5,12 +5,9 @@ var db = require('../database/database.js');
 var bcrypt = require('bcrypt');
 var helpers = require('./helpers.js').helpers;
 var session = require('express-session');
-<<<<<<< HEAD
 var mapHelpers = require('./mapHelpers.js');
 var ticketMasterHelpers = require('./ticketMasterHelpers');
-=======
 var socket = require('socket.io');
->>>>>>> Implement socket.io chat room
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -212,7 +209,6 @@ app.get('/favorites', auth, function(req, res) {
       res.status(200).send(results);
     }
   })
-<<<<<<< HEAD
 })
 
 //respond with map of yelp places to go based on category chosen
@@ -236,11 +232,3 @@ app.get('/upcomingEvents', function(req, res) {
     // res.sendStatus(201);
   })
 })
-
-const port = process.env.PORT || 3000;
-app.listen(port, function () {
-  console.log('listening on port 3000!');
-});
-=======
-})
->>>>>>> Implement socket.io chat room

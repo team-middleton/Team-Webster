@@ -301,7 +301,6 @@ class App extends React.Component {
                 </Message.Item> 
               </Grid.Row>
             </Grid.Column>
-<<<<<<< HEAD
             <Grid.Column width={5}>
             <Grid.Row> 
               <h1> map will go in this row. will need to work on sizing
@@ -312,11 +311,6 @@ class App extends React.Component {
                   long={this.state.long}
                 />          
                  </h1>
-=======
-            <Grid.Column width={6}>
-              <Grid.Row> 
-                <h1> map will go in this row. will need to work on sizing</h1>
->>>>>>> Implement socket.io chat room
               </Grid.Row>
               <Grid.Row> 
                 {rightSide}
