@@ -199,9 +199,18 @@ app.get('/map', (req, res) => {
 // ticketMasterHelpers.createGeoPoint(40.755603, -73.984931);
 
 app.get('/upcomingEvents', function(req, res) {
-  ticketMasterHelpers.getEventsFromTicketMaster('classical', 40.755603, -73.984931, function(response){
+  var searchedCategory = req.query.category;
+  if (searchedCategory === 'party') {
+    searchedCategory = 'Dance/Electronic';
+  }
+  if (searchedCategory === 'chill') {
+    searchedCategory = 'jazz';
+  }
+  console.log('req in server ', searchedCategory)
+  ticketMasterHelpers.getEventsFromTicketMaster(searchedCategory, 40.755603, -73.984931, function(response){
     console.log('data passed back to server ' , response)
-    res.sendStatus(201);
+    res.send(response)
+    // res.sendStatus(201);
   })
 })
 
