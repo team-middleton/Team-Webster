@@ -7,8 +7,8 @@ const options = [
 	{ text: 'Party', value: "party" },
 	{ text: "Relax", value: "chill" },
 	{ text: "Feelin' Classy", value: "classical" },
-	{ text: "Lets Get Trashed", value: "rock" },
-	{ text: "Romantic", value: "romance" }
+	{ text: "Lets Get Trashed", value: "country" },
+	{ text: "Latin", value: "latin" }
 ]
 
 // This component is the "Category" dropdown list which is the main bread and butter of our app.

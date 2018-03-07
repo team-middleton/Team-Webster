@@ -24,7 +24,8 @@ class App extends React.Component {
       favoriteId: '',
       navColor: 'black',
       lat: 40.7505788,
-      long: -73.9765793
+      long: -73.9765793,
+      concerts: []
   	}
     this.onLoginClick = this.onLoginClick.bind(this);
     this.onSignupClick = this.onSignupClick.bind(this);
@@ -39,6 +40,7 @@ class App extends React.Component {
     this.deleteFavorite = this.deleteFavorite.bind(this);
     this.changeBackgroundColor = this.changeBackgroundColor.bind(this);
     this.getPosition = this.getPosition.bind(this);
+    this.getConcerts = this.getConcerts.bind(this);
   }
 //this function, make requests to APIs for cocktails, beer, and wine, and playlist,\
 //as well as change the background color of the nav bar.
@@ -53,8 +55,8 @@ class App extends React.Component {
 		})
 		.catch((error) => {
 			throw error;
-		})
-
+    })
+    console.log('state selected category ', this.state.selectedCategory)
     axios.post('/playlist', { category: this.state.selectedCategory })
       .then((response) => {
         this.setState({
@@ -76,7 +78,7 @@ class App extends React.Component {
       this.setState({
         alcohols: ['white+wine', 'red+wine', 'whiskey', 'gin']
       }, this.getAlcohols)
-    } else if (category === 'romance') {
+    } else if (category === 'latin') {
       this.setState({
         alcohols: ['red+wine', 'white+wine', 'gin']
       }, this.getAlcohols)
@@ -84,7 +86,7 @@ class App extends React.Component {
       this.setState({
         alcohols: ['whiskey', 'red+wine', 'beer']
       }, this.getAlcohols)
-    } else if (category === 'rock') {
+    } else if (category === 'country') {
       this.setState({
         alcohols: ['whiskey', 'tequila', 'vodka', 'rum', 'gin']
       }, this.getAlcohols)
@@ -95,7 +97,26 @@ class App extends React.Component {
   changeCategory(event) {
     this.setState({
       selectedCategory: event
-    }, this.settingAlcohols(event))
+    }, () => {
+      // THIS IS BROKEN; MUST FIX COCTAILS
+      this.settingAlcohols(event);
+      this.getConcerts();
+    }
+  )
+  }
+
+  getConcerts() {
+    axios.get('/upcomingEvents', {
+      params: {
+        category: this.state.selectedCategory
+      }
+    })
+    .then((res) => {
+      console.log('res in client from concerts ', res.data)
+    })
+    .catch((err) => {
+      console.log('err in client in getting concerts ', err);
+    })
   }
 
   onLoginClick() {
@@ -120,7 +141,7 @@ class App extends React.Component {
   }
   //adding favorites drinks and playlist, call the onFavorite function below
   addFavorite() {
-    console.log(this.state.favorited);
+    // console.log(this.state.favorited);
     if (this.state.favorited === false) {
       this.setState({
         favorited: !this.state.favorited
@@ -257,12 +278,19 @@ class App extends React.Component {
             />
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column width={4}>
-              <div style={{margin:'0 auto', overflow:'auto'}}>
-                <SpotifyPlayer uri={'spotify:user:spotify:playlist:' + this.state.uriId} size={{width: 800, height: 850}} theme="black" view="list" />
-              </div>
+            <Grid.Column width={5}>
+              <Grid.Row>
+                <div style={{margin:'0 auto', overflow:'auto'}}>
+                  <SpotifyPlayer uri={'spotify:user:spotify:playlist:' + this.state.uriId} size={{width: 800, height: 850}} theme="black" view="list" />
+                </div>
+              </Grid.Row>
+              <Grid.Row>
+                <Message.Item>
+                      yo
+                </Message.Item> 
+              </Grid.Row>
             </Grid.Column>
-            <Grid.Column width={6}>
+            <Grid.Column width={5}>
             <Grid.Row> 
               <h1> map will go in this row. will need to work on sizing
                 <YelpMap 
