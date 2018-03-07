@@ -19,7 +19,7 @@ app.use(session({
   cookie: {maxAge: 3600000}
 }))
 
-//This is our randomize function which takes in an array of items and outputs a random index.
+//This is our randomize function which takes in an array of items and outputs random index.
 //This is used frequently throughout our code.
 let random = function(arr) {
   var randomIndex = Math.floor((Math.random() * arr.length) + 0);
