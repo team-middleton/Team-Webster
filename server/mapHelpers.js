@@ -14,7 +14,6 @@ const yelpAPI = 'x7T5oUXhDkDfOk2mt1wfFEwTswpx3XjIRpx_KzWdAiw-x4APiOyPlSzgDIZG-Ep
 // default location: lat: 40.7505788, long: -73.9765793 ?
 
 const getYelp = function(category, lat, long, callback) {
-  console.log('category', category)
   axios.get('https://api.yelp.com/v3/businesses/search', {
   	headers: {
       Authorization: `Bearer ${yelpAPI}`
