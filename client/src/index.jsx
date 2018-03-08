@@ -299,13 +299,13 @@ class App extends React.Component {
             <Grid.Column width={5}>
               <Grid.Row>
                 <div style={{margin:'0 auto', overflow:'auto'}}>
-                  <SpotifyPlayer uri={'spotify:user:spotify:playlist:' + this.state.uriId} size={{width: 500, height: 400}} theme="black" view="list" />
+                  <SpotifyPlayer uri={'spotify:user:spotify:playlist:' + this.state.uriId} size={{width: 470, height: 400}} theme="black" view="list" />
                 </div>
               </Grid.Row>
               <Grid.Row width={5}>
-                <div style={{margin:'0 auto', overflow:'auto'}}>
+                
                   <ConcertsContainer concerts={this.state.concerts}  />
-                </div>
+
               </Grid.Row>
             </Grid.Column>
             <Grid.Column width={6}>

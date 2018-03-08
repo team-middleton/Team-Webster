@@ -10,9 +10,11 @@ body {
 .concertList {
 	padding-left: 50px;
 	height: 380px;
+	border-bottom: 1px solid rgb(40, 40, 40);
 }
 .concertListTitle {
-	font-size: 15px;
+	padding-left: 50px;
+	font-size: 18px;
 	border-bottom: 1px solid rgb(40, 40, 40);
 	margin-bottom: 2px;
 }
@@ -25,12 +27,25 @@ body {
 .concertTextColumn {
 	margin-top: 10px;
 }
+.priceTextColumn {
+
+	border-left: 1px dashed rgb(40, 40, 40);
+}
 
 .concertImage {
 	margin-top: 10px;
-	height: 65px;
-	width: 70px;
-	border-radius: 50%
+	height: 70px;
+	border-radius: 50%;
+	image-rendering: -moz-crisp-edges;       
+	image-rendering:   -o-crisp-edges;        
+	image-rendering: crisp-edges;
+	image-rendering: -webkit-optimize-contrast;
+	-ms-interpolation-mode: nearest-neighbor; 
+}
+
+.priceTitle {
+	font-size: 14px;
+	color: #fff;
 }
 
 .concertName {
