@@ -80,6 +80,7 @@ url:
       return (
    	    <MapComponent 
           isMarkerShown
+          yelpList={this.state.yelpList}
           lat={this.props.lat}
           long={this.props.long}
           googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDu_83xpevHdDbkGIRm_wbY-6MtIT_b2cg&v=3.exp&libraries=geometry,drawing,places"
@@ -94,14 +95,49 @@ url:
 
 const MapComponent = withScriptjs(withGoogleMap((props) => (
   <GoogleMap
-    defaultZoom={14}
+    defaultZoom={9}
     defaultCenter={{ lat: 40.755603, lng: -73.984931 }}
     center={{ lat: props.lat, lng: props.long }}
   >
-    <Marker
-      position={{ lat: props.lat, lng: props.long }}
-    />
+    {
+      props.isMarkerShown && props.yelpList.map((place, i) => {
+        return (
+          <Marker
+            key={i}
+            position={{ lat: place.coordinates.latitude, lng: place.coordinates.longitude}}
+          /> 
+        );
+      })
+
+    }
   </GoogleMap>
 )));
 
 export default YelpMap;
+/*
+    <Marker
+      position={{ lat: props.lat, lng: props.long }}
+    />
+
+  {props.isMarkerShown && 
+    props.businesses.map((business, i) => {
+        var letter =  String.fromCharCode(65 + i);
+        if (props.hovered === i) {
+
+
+          return ( <Marker 
+          animation = {google.maps.Animation.BOUNCE}
+          key={props.businesses[i].name}
+          position={{ lat: props.businesses[i].coordinates.latitude, lng: props.businesses[i].coordinates.longitude }} 
+        />)
+        } else {
+          return ( <Marker 
+          label= {letter}
+          key={props.businesses[i].name}
+          position={{ lat: props.businesses[i].coordinates.latitude, lng: props.businesses[i].coordinates.longitude }} 
+        />)
+        }
+    })
+  }
+
+*/

@@ -313,8 +313,7 @@ class App extends React.Component {
             </Grid.Column>
             <Grid.Column width={6}>
               <Grid.Row> 
-                <h1> map will go in this row. will need to work on sizing        
-                </h1>
+                <h1> Go check out these places to fit your mood!</h1>
                 <div style={{ height: `400px` }}>
                   <YelpMap 
                     category={this.state.selectedCategory}
