@@ -210,19 +210,19 @@ class App extends React.Component {
   changeBackgroundColor() {
     if (this.state.selectedCategory === 'party') {
       this.setState({
-        navColor: 'black'
+        navColor: 'yellow'
       })
-    } else if (this.state.selectedCategory === 'romance') {
+    } else if (this.state.selectedCategory === 'latin') {
       this.setState({
-        navColor: 'pink'
+        navColor: 'red'
       })
     } else if (this.state.selectedCategory === 'chill') {
         this.setState({
-          navColor: 'blue'
+          navColor: 'violet'
         })
-    } else if (this.state.selectedCategory === 'rock') {
+    } else if (this.state.selectedCategory === 'country') {
         this.setState({
-          navColor: 'red'
+          navColor: 'green'
         })
     } else if (this.state.selectedCategory === 'classical') {
         this.setState({
@@ -322,7 +322,7 @@ class App extends React.Component {
                 </div>
               </Grid.Row>
               <Grid.Row> 
-                {rightSide}
+                  {rightSide}
               </Grid.Row>
             </Grid.Column>
             <Grid.Column width={5}>
