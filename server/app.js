@@ -219,6 +219,8 @@ app.post('/map', (req, res) => {
 
 app.get('/upcomingEvents', function(req, res) {
   var searchedCategory = req.query.category;
+  var lat = req.query.lat;
+  var long = req.query.long;
   if (searchedCategory === 'party') {
     searchedCategory = 'Dance/Electronic';
   }
@@ -226,7 +228,7 @@ app.get('/upcomingEvents', function(req, res) {
     searchedCategory = 'jazz';
   }
   console.log('req in server ', searchedCategory)
-  ticketMasterHelpers.getEventsFromTicketMaster(searchedCategory, 40.755603, -73.984931, function(response){
+  ticketMasterHelpers.getEventsFromTicketMaster(searchedCategory, lat, long, function(response){
     // console.log('data passed back to server ' , response)
     res.send(response)
     // res.sendStatus(201);
