@@ -30,43 +30,6 @@ class YelpMap extends React.Component {
 	});
   }
 
-  /* yelp data: 
-categories:
-(3) [{…}, {…}, {…}]
-coordinates:
-{latitude: 40.7300334907642, longitude: -73.9818279024468}
-display_phone:
-"(212) 478-3021"
-distance:
-2326.933371257446
-id:
-"keybar-new-york"
-image_url:
-"https://s3-media1.fl.yelpcdn.com/bphoto/KyJKehujQmJiIVKeyKJmXg/o.jpg"
-is_closed:
-false
-location:
-{address1: "432 E 13th St", address2: "", address3: "", city: "New York", zip_code: "10009", …}
-name:
-"Keybar"
-phone:
-"+12124783021"
-price:
-"$"
-rating:
-4
-review_count:
-523
-transactions:
-[]
-url:
-"https://www.yelp.com/biz/keybar-new-york?adjust_creative=uMSAdHu0SdwsS90Ua44vlw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=uMSAdHu0SdwsS90Ua44vlw"
-  */
-
-  componentDidMount() {
-    //this.getYelp(this.props.category);
-  }
-
   componentDidUpdate() {
   	if (this.state.category !== this.props.category) {
   	  this.getYelp(this.props.category);
@@ -75,7 +38,6 @@ url:
   }
 
   render() {
-  	//console.log(this.state.yelpList)
   	if (this.state.yelpResponse) {
       return (
    	    <MapComponent 
@@ -95,7 +57,7 @@ url:
 
 const MapComponent = withScriptjs(withGoogleMap((props) => (
   <GoogleMap
-    defaultZoom={9}
+    defaultZoom={13}
     defaultCenter={{ lat: 40.755603, lng: -73.984931 }}
     center={{ lat: props.lat, lng: props.long }}
   >
@@ -114,30 +76,3 @@ const MapComponent = withScriptjs(withGoogleMap((props) => (
 )));
 
 export default YelpMap;
-/*
-    <Marker
-      position={{ lat: props.lat, lng: props.long }}
-    />
-
-  {props.isMarkerShown && 
-    props.businesses.map((business, i) => {
-        var letter =  String.fromCharCode(65 + i);
-        if (props.hovered === i) {
-
-
-          return ( <Marker 
-          animation = {google.maps.Animation.BOUNCE}
-          key={props.businesses[i].name}
-          position={{ lat: props.businesses[i].coordinates.latitude, lng: props.businesses[i].coordinates.longitude }} 
-        />)
-        } else {
-          return ( <Marker 
-          label= {letter}
-          key={props.businesses[i].name}
-          position={{ lat: props.businesses[i].coordinates.latitude, lng: props.businesses[i].coordinates.longitude }} 
-        />)
-        }
-    })
-  }
-
-*/

@@ -11,14 +11,7 @@ const paramsObj = {
 
 const yelpAPI = 'x7T5oUXhDkDfOk2mt1wfFEwTswpx3XjIRpx_KzWdAiw-x4APiOyPlSzgDIZG-Epm7COaSs8xFxyEL56ISBKif8QjhOeepMK-8ZiRJUtoCFHWKxgGp02NXaOxAY2MWnYx';
 
-// default location: lat: 40.7505788, long: -73.9765793
-
-// function to process data from yelp
-//determine what is needed for google maps
-const yelpData = function(arr) {
-  
-};
-
+// default location: lat: 40.7505788, long: -73.9765793 ?
 
 const getYelp = function(category, lat, long, callback) {
   console.log('category', category)
@@ -28,23 +21,17 @@ const getYelp = function(category, lat, long, callback) {
   	},
     params: {
       categories: paramsObj[category],
-      limit: 5,
+      limit: 10,
       latitude: lat,
       longitude: long
     }
   })
   .then((res) => {
-  	//console.log(res.data.businesses)
   	const data = res.data.businesses;
-  	//getMap(/* yelp business data */)
   	callback(data);
 
   })
   .catch((err) => { console.log(err); });
-}
-
-const getMap = function() {
-  
 }
 
 module.exports.getYelp = getYelp;
