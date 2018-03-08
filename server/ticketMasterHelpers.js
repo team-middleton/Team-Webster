@@ -37,7 +37,7 @@ ticketMasterMethods.getEventsFromTicketMaster = function(keyword, lat, long, cal
             eventsArray.push(eventData);
         })
         // callback('yo')
-        // callback(res.data._embedded.events[0].images)
+        // callback(res.data._embedded.events[0])
         callback(eventsArray)
     })
 }
