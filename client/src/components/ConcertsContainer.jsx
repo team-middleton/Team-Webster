@@ -11,19 +11,22 @@ class ConcertsContainer extends React.Component{
     }
     render() {
         if(this.props.concerts.length) {
-            var concertsTitle = <h5 className="concertListTitle" > Related concerts in your area </h5>
+            var concertsTitle = "Related concerts in your area"
         } else {
-            var concertsTitle = <div></div>
+            var concertsTitle =" Select your mood to view concerts in your area"
         }
         return(
-        <div className = "concertList">
-            <Container> 
-                {concertsTitle}
-                {this.props.concerts.map((concert, i) => {
-                    return <ConcertItem concert={concert} key={i}/>
-                })}
-            </Container>
-        </div>
+            <div>
+                <h5 className="concertListTitle" > {concertsTitle} </h5>
+            
+                <div className = "concertList" style={{margin:'0 auto', overflow:'auto'}}>
+                        <Container> 
+                            {this.props.concerts.map((concert, i) => {
+                                return <ConcertItem concert={concert} key={i}/>
+                            })}
+                        </Container>
+                </div>
+            </div>
         )
     }
 }

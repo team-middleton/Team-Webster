@@ -31,7 +31,7 @@ ticketMasterMethods.getEventsFromTicketMaster = function(keyword, lat, long, cal
             eventData.keyword = keyword;
             eventData.venue = event._embedded.venues[0].name;
             eventData.type = event.type;
-            eventData.imageUrl = event.images[1].url
+            eventData.imageUrl = event.images[4].url
             eventsArray.push(eventData);
         })
         // callback('yo')
