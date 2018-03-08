@@ -3,6 +3,7 @@ body {
 	color: white;
 }
 
+
 .player {
   padding-left: 30px;
 }
@@ -79,7 +80,6 @@ body {
 }
 
 img {
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	opacity: 0.75;
   height: 850px;
   width: 800px;

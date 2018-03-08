@@ -21,7 +21,7 @@ class Drop extends React.Component {
 
 	render() {
 		return (
-			<Dropdown placeholder="Choose Mood" options={options} value={this.props.category} onChange={(e, { value }) => (this.props.selectHandler(value))} />
+			<Dropdown placeholder="Choose Mood" options={options} value={this.props.category} onChange={(e, { value }) => (this.props.selectHandler(value))} className="dropDownText" />
 		)
 	}
 }

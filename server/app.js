@@ -118,6 +118,8 @@ app.post('/drinks', function (req, res) {
   }
 })
 
+
+
 //This uses the helper function getMusic to obtain playlists depending on the category selected on the client side.
 app.post('/playlist', function(req, res) {
   helpers.getMusic(req.body.category, function(results) {
@@ -222,6 +224,7 @@ app.get('/upcomingEvents', function(req, res) {
   var lat = req.query.lat;
   var long = req.query.long;
   if (searchedCategory === 'party') {
+    
     searchedCategory = 'Dance/Electronic';
   }
   if (searchedCategory === 'chill') {
