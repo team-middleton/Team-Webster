@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker , defaultCenter} from 'react-google-maps'; 
-
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, defaultCenter, InfoWindow } from 'react-google-maps'; 
 
 class YelpMap extends React.Component {
   constructor(props) {
@@ -9,9 +8,12 @@ class YelpMap extends React.Component {
   	this.state = {
   	  yelpResponse: false,
   	  category: '',
-  	  yelpList: []
+  	  yelpList: [],
+  	  itemClicked: 0,
+  	  infoOpen: true
   	};
   	this.getYelp = this.getYelp.bind(this);
+  	this.handleClick = this.handleClick.bind(this);
   }
 
   //query yelp api
@@ -22,12 +24,17 @@ class YelpMap extends React.Component {
       long: this.props.long
     })
     .then((res) => {
-      console.log('yelp response', res);
+      console.log(res.data)
       this.setState({ yelpResponse: true, yelpList: res.data });
     })
 	.catch((error) => {
 	  throw error;
 	});
+  }
+
+  //function to set state, change clicked
+  handleClick(i, e) {
+    this.setState({ itemClicked: i });
   }
 
   componentDidUpdate() {
@@ -42,13 +49,18 @@ class YelpMap extends React.Component {
       return (
    	    <MapComponent 
           isMarkerShown
+          itemClicked={this.state.itemClicked}
+          handleClick={this.handleClick}
           yelpList={this.state.yelpList}
           lat={this.props.lat}
           long={this.props.long}
+          infoOpen={this.state.infoOpen}
           googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDu_83xpevHdDbkGIRm_wbY-6MtIT_b2cg&v=3.exp&libraries=geometry,drawing,places"
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `100%`}} />}
-          mapElement={<div style={{ height: `100%` }}/>}
+          mapElement={<div style={{ height: `100%` }}
+          
+          />}
    	    />
    	  );
     } else { return <div>choose a mood!</div> }
@@ -67,10 +79,22 @@ const MapComponent = withScriptjs(withGoogleMap((props) => (
           <Marker
             key={i}
             position={{ lat: place.coordinates.latitude, lng: place.coordinates.longitude}}
-          /> 
-        );
+            onClick={() => { props.handleClick(i) }}
+          >
+            {i === props.itemClicked && (
+              <InfoWindow 
+                class="infoWindow"
+                onCloseClick={props.onToggleOpen}
+              >
+              <div>{place.name}
+              <br />{place.location.address1}
+              <br /><a href={place.url}>IS THIS PLACE ANY GOOD??</a>
+              </div>
+              </InfoWindow>
+            )}
+          </Marker> 
+        );        
       })
-
     }
   </GoogleMap>
 )));

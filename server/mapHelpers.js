@@ -5,8 +5,8 @@ const paramsObj = {
   party: 'danceclubs',
   chill: 'spas',
   classical: 'cocktail_bars',
-  rock: 'divebars',
-  romance: 'wine_bars'
+  country: 'divebars',
+  latin: 'latin'
 };
 
 const yelpAPI = 'x7T5oUXhDkDfOk2mt1wfFEwTswpx3XjIRpx_KzWdAiw-x4APiOyPlSzgDIZG-Epm7COaSs8xFxyEL56ISBKif8QjhOeepMK-8ZiRJUtoCFHWKxgGp02NXaOxAY2MWnYx';
