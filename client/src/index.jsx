@@ -45,6 +45,11 @@ class App extends React.Component {
     this.getPosition = this.getPosition.bind(this);
     this.getConcerts = this.getConcerts.bind(this);
   }
+
+  componentDidMount() {
+    this.getPosition();
+  }
+
 //this function, make requests to APIs for cocktails, beer, and wine, and playlist,\
 //as well as change the background color of the nav bar.
   getAlcohols() {
@@ -244,14 +249,6 @@ class App extends React.Component {
       console.log('error', error);  
     });
   }
-  
-  componentDidMount() {
-    this.getPosition();
-  }
-
-//moving app endpoint "https://maps.googleapis.com/maps/api/js?key=AIzaSyDu_83xpevHdDbkGIRm_wbY-6MtIT_b2cg&v=3.exp&libraries=geometry,drawing,places"
-
-//my endpoint  "https://maps.googleapis.com/maps/api/js?key=AIzaSyDjDJJ4CI_Vb511PMdDNVGqXN4yJYrdJHM&v=3.exp&libraries=geometry,drawing,places"
 
   render () {
     //place holder for when the drinks are not rendered
