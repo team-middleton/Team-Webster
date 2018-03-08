@@ -1,58 +1,107 @@
 import React from 'react';
 import axios from 'axios';
+import { withScriptjs, withGoogleMap, GoogleMap, Marker , defaultCenter} from 'react-google-maps'; 
+
 
 class YelpMap extends React.Component {
   constructor(props) {
   	super(props);
   	this.state = {
+  	  yelpResponse: false,
+  	  category: '',
+  	  yelpList: []
   	};
-  	//this.getPosition = this.getPosition.bind(this);
+  	this.getYelp = this.getYelp.bind(this);
   }
-  
-  // getPosition() {
-  // 	navigator.geolocation.getCurrentPosition((pos) => {
-  //     console.log('success', pos.coords);
-  //     this.setState({ lat: pos.coords.latitude, long: pos.coords.longitude });
-  // 	}, (error) => {
-  // 	  console.log('error', error);	
-  // 	});
-  // }
+
+  //query yelp api
+  getYelp(category) {
+    axios.post('/map', { 
+      category: category,
+      lat: this.props.lat,
+      long: this.props.long
+    })
+    .then((res) => {
+      console.log('yelp response', res);
+      this.setState({ yelpResponse: true, yelpList: res.data });
+    })
+	.catch((error) => {
+	  throw error;
+	});
+  }
+
+  /* yelp data: 
+categories:
+(3) [{…}, {…}, {…}]
+coordinates:
+{latitude: 40.7300334907642, longitude: -73.9818279024468}
+display_phone:
+"(212) 478-3021"
+distance:
+2326.933371257446
+id:
+"keybar-new-york"
+image_url:
+"https://s3-media1.fl.yelpcdn.com/bphoto/KyJKehujQmJiIVKeyKJmXg/o.jpg"
+is_closed:
+false
+location:
+{address1: "432 E 13th St", address2: "", address3: "", city: "New York", zip_code: "10009", …}
+name:
+"Keybar"
+phone:
+"+12124783021"
+price:
+"$"
+rating:
+4
+review_count:
+523
+transactions:
+[]
+url:
+"https://www.yelp.com/biz/keybar-new-york?adjust_creative=uMSAdHu0SdwsS90Ua44vlw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=uMSAdHu0SdwsS90Ua44vlw"
+  */
 
   componentDidMount() {
-    //this.getPosition();
+    //this.getYelp(this.props.category);
   }
 
   componentDidUpdate() {
-    //make get request to /map ? 
-    // axios.get('/map', { lat: this.props.lat, long: this.props.long, category: this.props.category })
-    //   .then((res) => {
-    //     // set state? 
-    //   })
-    //   .catch((err) => { console.log(err) });
+  	if (this.state.category !== this.props.category) {
+  	  this.getYelp(this.props.category);
+  	  this.setState({ category: this.props.category });
+  	}
   }
 
-  render() { //render the map with pinned locations, conditional on this.props.category !== ''
-  	if (this.props.category !== '') { return (<div>Pick a mood!</div>); }
-    else {
-  	  return (
-        <div>
-
-        </div>
-  	  );
-    }
+  render() {
+  	//console.log(this.state.yelpList)
+  	if (this.state.yelpResponse) {
+      return (
+   	    <MapComponent 
+          isMarkerShown
+          lat={this.props.lat}
+          long={this.props.long}
+          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDu_83xpevHdDbkGIRm_wbY-6MtIT_b2cg&v=3.exp&libraries=geometry,drawing,places"
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `100%`}} />}
+          mapElement={<div style={{ height: `100%` }}/>}
+   	    />
+   	  );
+    } else { return <div>choose a mood!</div> }
   }
 }
 
+const MapComponent = withScriptjs(withGoogleMap((props) => (
+  <GoogleMap
+    defaultZoom={14}
+    defaultCenter={{ lat: 40.755603, lng: -73.984931 }}
+    center={{ lat: props.lat, lng: props.long }}
+  >
+    <Marker
+      position={{ lat: props.lat, lng: props.long }}
+    />
+  </GoogleMap>
+)));
+
 export default YelpMap;
-
-//get geolocation
-//once category selected:
-//use this.props.category to query yelp
-//query google maps with yelp results
-//display on map
-
-//write bottom-up, from yelp api call-> google map call
-//app.js endpoint pass to helper functions
-
-
-
