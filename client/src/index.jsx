@@ -310,7 +310,7 @@ class App extends React.Component {
 
               </Grid.Row>
             </Grid.Column>
-            <Grid.Column width={6}>
+            <Grid.Column width={5}>
               <Grid.Row> 
                 <h1> Go check out these places to fit your mood!</h1>
                 <div style={{ height: `400px` }}>
@@ -325,7 +325,7 @@ class App extends React.Component {
                 {rightSide}
               </Grid.Row>
             </Grid.Column>
-            <Grid.Column width={6}>
+            <Grid.Column width={5}>
               <Chat mood={this.state.selectedCategory} user={this.state.user}/>
             </Grid.Column>
           </Grid.Row>
