@@ -227,7 +227,7 @@ app.get('/upcomingEvents', function(req, res) {
   if (searchedCategory === 'chill') {
     searchedCategory = 'jazz';
   }
-  console.log('req in server ', searchedCategory)
+  // console.log('req in server ', searchedCategory)
   ticketMasterHelpers.getEventsFromTicketMaster(searchedCategory, lat, long, function(response){
     // console.log('data passed back to server ' , response)
     res.send(response)

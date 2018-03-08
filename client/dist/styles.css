@@ -23,6 +23,7 @@ body {
 	border-bottom: 1px solid rgb(40, 40, 40);
 	border-left: 1px solid rgb(40, 40, 40);
 	margin: 0;
+	height: 115px;
 }
 .concertTextColumn {
 	margin-top: 10px;
