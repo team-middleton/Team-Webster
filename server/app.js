@@ -79,7 +79,7 @@ app.post('/drinks', function (req, res) {
               var drink = JSON.parse(details).drinks[0];
               var cocktail = {
                 drinkName: drink.strDrink,
-                drinkImageUrl: 'https://' + drink.strDrinkThumb,
+                drinkImageUrl:  drink.strDrinkThumb,
                 drinkInstruction: drink.strInstructions,
                 ingredient: helpers.filterIngredients(drink)
               }
