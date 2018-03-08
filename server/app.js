@@ -212,9 +212,9 @@ app.get('/favorites', auth, function(req, res) {
 })
 
 //respond with map of yelp places to go based on category chosen
-app.get('/map', (req, res) => {
-  console.log(req.headers); //changed to headers to test in postman
-  mapHelpers.getYelp(req.headers.category, req.headers.lat, req.headers.long, res.send.bind(res));
+app.post('/map', (req, res) => {
+  console.log('req', req.body); //changed to headers to test in postman
+  mapHelpers.getYelp(req.body.category, req.body.lat, req.body.long, res.send.bind(res));
 });
 // ticketMasterHelpers.createGeoPoint(40.755603, -73.984931);
 

@@ -244,6 +244,14 @@ class App extends React.Component {
       console.log('error', error);  
     });
   }
+  
+  componentDidMount() {
+    this.getPosition();
+  }
+
+//moving app endpoint "https://maps.googleapis.com/maps/api/js?key=AIzaSyDu_83xpevHdDbkGIRm_wbY-6MtIT_b2cg&v=3.exp&libraries=geometry,drawing,places"
+
+//my endpoint  "https://maps.googleapis.com/maps/api/js?key=AIzaSyDjDJJ4CI_Vb511PMdDNVGqXN4yJYrdJHM&v=3.exp&libraries=geometry,drawing,places"
 
   render () {
     //place holder for when the drinks are not rendered
@@ -303,16 +311,17 @@ class App extends React.Component {
                 </div>
               </Grid.Row>
             </Grid.Column>
-            <Grid.Column width={5}>
-            <Grid.Row> 
-              <h1> map will go in this row. will need to work on sizing
-                <YelpMap 
-                  getPosition={this.getPosition}
-                  category={this.state.selectedCategory}
-                  lat={this.state.lat}
-                  long={this.state.long}
-                />          
-                 </h1>
+            <Grid.Column width={6}>
+              <Grid.Row> 
+                <h1> map will go in this row. will need to work on sizing        
+                </h1>
+                <div style={{ height: `400px` }}>
+                  <YelpMap 
+                    category={this.state.selectedCategory}
+                    lat={this.state.lat}
+                    long={this.state.long}
+                  />  
+                </div>
               </Grid.Row>
               <Grid.Row> 
                 {rightSide}
@@ -330,3 +339,5 @@ class App extends React.Component {
 ReactDOM.render(<App />, document.getElementById('app'));
 
 export default App
+
+
