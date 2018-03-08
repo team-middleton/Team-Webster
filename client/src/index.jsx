@@ -79,7 +79,7 @@ class App extends React.Component {
   settingAlcohols(category) {
     if (category === 'party') {
       this.setState({
-        alcohols: ['tequila', 'vodka', 'rum', 'beer']
+        alcohols: ['tequila', 'vodka', 'rum']
       }, this.getAlcohols)
     } else if (category === 'classical') {
       this.setState({
@@ -87,15 +87,15 @@ class App extends React.Component {
       }, this.getAlcohols)
     } else if (category === 'latin') {
       this.setState({
-        alcohols: ['red+wine', 'white+wine', 'gin']
+        alcohols: ['tequila', 'red+wine', 'gin']
       }, this.getAlcohols)
     } else if (category === 'chill') {
       this.setState({
-        alcohols: ['whiskey', 'red+wine', 'beer']
+        alcohols: ['whiskey', 'red+wine', 'gin']
       }, this.getAlcohols)
     } else if (category === 'country') {
       this.setState({
-        alcohols: ['whiskey', 'tequila', 'vodka', 'rum', 'gin']
+        alcohols: ['whiskey', 'rum', 'vodka']
       }, this.getAlcohols)
     };
   }
