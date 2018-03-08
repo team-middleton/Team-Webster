@@ -1,5 +1,6 @@
 const axios = require('axios');
 var geohash = require('ngeohash');
+var dateFormat = require('dateformat');
 
 var exampleLat = 40.755603;
 var exampleLong = 73.984931;
@@ -24,6 +25,7 @@ ticketMasterMethods.getEventsFromTicketMaster = function(keyword, lat, long, cal
             eventData.date = event.dates.start.localDate;
             eventData.time = event.dates.start.localTime;
             eventData.dateTime = event.dates.start.dateTime;
+            eventData.date = dateFormat(event.dates.start.localDate, 'fullDate');
             if(event.priceRanges) {
                 eventData.minPrice = event.priceRanges[0].min;
                 eventData.maxPrice = event.priceRanges[0].max;

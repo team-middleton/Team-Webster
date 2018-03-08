@@ -11,7 +11,7 @@ class ConcertsContainer extends React.Component{
     }
     render() {
         if(this.props.concerts.length) {
-            var concertsTitle = "Related concerts in your area"
+            var concertsTitle = "Related concerts coming up in your area"
         } else {
             var concertsTitle =" Select your mood to view concerts in your area"
         }

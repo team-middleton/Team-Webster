@@ -22,7 +22,7 @@ class ConcertItem extends React.Component {
                             <div className="concertTextColumn">
                                 <p> <a className="concertName"  href={this.props.concert.url}  target="_blank"> {this.props.concert.name} </a></p>
                                 <p className="concertDescription"> {this.props.concert.venue} </p>
-                                <p className="concertDescription"> {this.props.concert.dateTime} </p>
+                                <p className="concertDescription"> {this.props.concert.date} </p>
                             </div>
                         </Grid.Column>
                     </Grid.Row>

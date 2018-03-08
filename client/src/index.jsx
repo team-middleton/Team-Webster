@@ -115,7 +115,9 @@ class App extends React.Component {
   getConcerts() {
     axios.get('/upcomingEvents', {
       params: {
-        category: this.state.selectedCategory
+        category: this.state.selectedCategory,
+        lat: this.state.lat,
+        long: this.state.long
       }
     })
     .then((res) => {
