@@ -321,6 +321,9 @@ class App extends React.Component {
             </Grid.Column>
             <Grid.Column width={5}>
               <Grid.Row> 
+                  {rightSide}
+              </Grid.Row>
+              <Grid.Row> 
                 <h1> Go check out these places to fit your mood!</h1>
                 <div style={{ height: `400px` }}>
                   <YelpMap 
@@ -329,9 +332,6 @@ class App extends React.Component {
                     long={this.state.long}
                   />  
                 </div>
-              </Grid.Row>
-              <Grid.Row> 
-                  {rightSide}
               </Grid.Row>
             </Grid.Column>
             <Grid.Column width={5}>
