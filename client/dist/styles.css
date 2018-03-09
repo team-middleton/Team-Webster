@@ -192,3 +192,18 @@ label {
 .infoWindow {
 	color: black;
 }
+
+.logo {
+	/*font-family: 'BenchNine', sans-serif;*/
+	font-family: 'Allerta Stencil', sans-serif;
+	font-size: 66pt;
+}
+
+.modalContent {
+	text-align: center;
+}
+
+.menuLogo {
+	font-family: 'Allerta Stencil', sans-serif;
+	font-size: 20pt;
+}

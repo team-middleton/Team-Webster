@@ -38,7 +38,7 @@ class Drop extends React.Component {
 			var handleClose = this.props.handleClose;
 			var placeholderStyle = {
 				color: '#016936',
-				fontSize: '25px',
+				fontSize: '30px',
 				fontWeight: 'bold'
 			}
 		} else {
@@ -54,7 +54,7 @@ class Drop extends React.Component {
 
 		return (
 			<Dropdown 
-			placeholder="choose your mood"
+			placeholder="Choose your mood to begin your experience"
 			options={options} 
 			style={placeholderStyle} 
 			value={this.props.category} 
