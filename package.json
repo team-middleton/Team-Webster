@@ -10,7 +10,9 @@
   "scripts": {
     "start": "npm i -g webpack && webpack && node server/app.js",
     "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon server/app.js"
+    "server-dev": "nodemon server/app.js",
+    "test": "mocha --compilers js:babel-register --require ./test/helpers.js --require ./test/dom.js --recursive",
+    "tdd": "npm test -- --watch"
   },
   "author": "Team Webster",
   "license": "MIT",
@@ -19,6 +21,11 @@
     "babel-loader": "^6.3.2",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.23.0",
+    "chai": "^4.1.2",
+    "enzyme": "^3.3.0",
+    "mocha": "^5.0.4",
+    "react-addons-test-utils": "^15.6.2",
+    "sinon": "^4.4.2",
     "webpack": "^2.2.1",
     "webpack-cli": "^2.0.10"
   },
