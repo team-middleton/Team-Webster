@@ -11,12 +11,18 @@
     "start": "npm i -g webpack && webpack && node server/app.js",
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/app.js",
+<<<<<<< HEAD
     "test": "mocha -w test/compiled/*.spec.js",
     "dev:hot": "webpack-dev-server --hot --inline --progress --colors --watch --display-error-details --display-cached --content-base ./"
+=======
+    "test": "mocha --compilers js:babel-register --require ./test/helpers.js --require ./test/dom.js --recursive",
+    "tdd": "npm test -- --watch"
+>>>>>>> hope to have removed my work in trying to create a test suite
   },
   "author": "Team Webster",
   "license": "MIT",
   "devDependencies": {
+<<<<<<< HEAD
     "babel-core": "^6.26.0",
     "babel-loader": "^6.4.1",
     "babel-preset-env": "^1.6.1",
@@ -30,6 +36,19 @@
     "react-addons-test-utils": "^15.6.2",
     "sinon": "^4.4.2",
     "webpack": "^2.2.1"
+=======
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "chai": "^4.1.2",
+    "enzyme": "^3.3.0",
+    "mocha": "^5.0.4",
+    "react-addons-test-utils": "^15.6.2",
+    "sinon": "^4.4.2",
+    "webpack": "^2.2.1",
+    "webpack-cli": "^2.0.10"
+>>>>>>> hope to have removed my work in trying to create a test suite
   },
   "dependencies": {
     "axios": "^0.18.0",
