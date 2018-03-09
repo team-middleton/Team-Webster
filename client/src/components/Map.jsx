@@ -83,10 +83,9 @@ const MapComponent = withScriptjs(withGoogleMap((props) => (
           >
             {i === props.itemClicked && (
               <InfoWindow 
-                class="infoWindow"
                 onCloseClick={props.onToggleOpen}
               >
-              <div>{place.name}
+              <div className="infoWindow">{place.name}
               <br />{place.location.address1}
               <br /><a href={place.url}>IS THIS PLACE ANY GOOD??</a>
               </div>
