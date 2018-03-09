@@ -288,7 +288,7 @@ class App extends React.Component {
       </div>
       
         <Grid stackable>
-          <Grid.Row columns={16} centered>
+          <Grid.Row columns={16}>
             <Navigation
               id='navbar'
               onSignupClick={this.onSignupClick}

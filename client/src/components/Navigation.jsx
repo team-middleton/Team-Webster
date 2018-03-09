@@ -32,8 +32,12 @@ class Navigation extends React.Component {
     }
 
     return (
-      <Menu inverted fluid widths={3} color={this.props.navColor}>
-        <Menu.Item>
+      <Menu borderless inverted fluid color={this.props.navColor} style={{height: '50px'}}>
+        <Menu.Item position="left" className='menuLogo'>Drinqify</Menu.Item>
+        <Menu.Item position="right">
+          <Drop selectHandler = {this.props.selectHandler} category={this.props.category}/>
+        </Menu.Item>
+        <Menu.Item position="right">
           <Menu.Item onClick={this.props.addFavorite}>
             {heartState}
           </Menu.Item>
@@ -51,11 +55,6 @@ class Navigation extends React.Component {
               />
             </Dropdown.Menu>
           </Dropdown>
-        </Menu.Item>
-        <Menu.Item>
-          <Drop selectHandler = {this.props.selectHandler} category={this.props.category}/>
-        </Menu.Item>
-        <Menu.Item>
           <Dropdown item text='Login/Sign Up'>
             <Dropdown.Menu>
               <Dropdown.Item as='a' name='login' onClick={this.props.onLoginClick}>

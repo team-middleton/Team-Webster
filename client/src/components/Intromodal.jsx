@@ -36,17 +36,14 @@ class Intromodal extends React.Component {
         basic
         size='small'
       >
-        <Modal.Content>
-        <h1>Moodify</h1>
+        <Modal.Content className="modalContent">
+        <div className="logo">Drinqify</div>
+            <Icon name='play' color='green' size='huge'/> 
             <Icon.Group size = 'huge'>
                 <Icon loading size='big' name='sun' color='green'/>
                 <Icon name='cocktail' color='green'/>
             </Icon.Group>
-            <Icon name='marker' color='green' size='huge'/>
-            <Icon name='play' color='green' size='huge'/>
-            <h3>Select your mood to begin your experience</h3>
-
-          
+            <Icon name='marker' color='green' size='huge'/>       
         </Modal.Content>
         <Modal.Actions>
           <Drop handleClose={this.handleClose} selectHandler={this.props.selectHandler}  />
