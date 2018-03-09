@@ -10,8 +10,9 @@ import Navigation from './components/Navigation.jsx'
 import SpotifyPlayer from './components/Playlist.jsx';
 import Chat from './components/Chat.jsx'
 import { Message, Grid } from 'semantic-ui-react'
-import YelpMap from './components/Map.jsx'
+import YelpMap from './components/Map.jsx';
 import ConcertsContainer from './components/ConcertsContainer.jsx';
+import Intromodal from './components/Intromodal.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -28,7 +29,8 @@ class App extends React.Component {
       lat: 40.7505788,
       long: -73.9765793,
       concerts: [],
-      user: null
+      user: null,
+      showIntroModal: true
     }
     this.onLoginClick = this.onLoginClick.bind(this);
     this.onSignupClick = this.onSignupClick.bind(this);
@@ -44,6 +46,7 @@ class App extends React.Component {
     this.changeBackgroundColor = this.changeBackgroundColor.bind(this);
     this.getPosition = this.getPosition.bind(this);
     this.getConcerts = this.getConcerts.bind(this);
+    // this.toggleIntroModal = this.toggleIntroModal.bind(this)
   }
 
   componentDidMount() {
@@ -52,6 +55,7 @@ class App extends React.Component {
 
 //this function, make requests to APIs for cocktails, beer, and wine, and playlist,\
 //as well as change the background color of the nav bar.
+  
   getAlcohols() {
     this.changeBackgroundColor();
 		axios.post('/drinks', {alcohols: this.state.alcohols})
@@ -112,7 +116,7 @@ class App extends React.Component {
   )
   }
 
-  getConcerts() {
+  getConcerts() { 
     axios.get('/upcomingEvents', {
       params: {
         category: this.state.selectedCategory,
@@ -278,6 +282,11 @@ class App extends React.Component {
     }
     console.log('app rendered')
   	return (
+      <div> 
+        <div>
+      <Intromodal selectHandler={this.changeCategory} />
+      </div>
+      
         <Grid stackable>
           <Grid.Row columns={16} centered>
             <Navigation
@@ -330,6 +339,7 @@ class App extends React.Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
+        </div>
     )
   }
 }

@@ -17,11 +17,45 @@ const options = [
 class Drop extends React.Component {
 	constructor(props) {
 		super(props)
+		this.handleChange = this.handleChange.bind(this);
 	}
+	
+	handleChange(value) {
+		this.props.selectHandler(value);
+		if(this.props.handleClose) {
+			var handleClose = this.props.handleClose;
+		} else {
+			var handleClose = function() {
+				return;
+			}
+		}
+		handleClose()
+	}
+ 
 
 	render() {
+		if(this.props.handleClose) {
+			var handleClose = this.props.handleClose;
+			var placeholderStyle = {
+				color: '#016936',
+				fontSize: '30px',
+				fontWeight: 'bold'
+			}
+		} else {
+			var placeholderStyle = {
+				color: '#016936'
+			}
+			var handleClose = function() {
+				return 1+1;
+			}
+		}
+
+		var placeholder = <div style={placeholderStyle}> choose mood</div>
+
 		return (
-			<Dropdown placeholder="Choose Mood" options={options} value={this.props.category} onChange={(e, { value }) => (this.props.selectHandler(value))} className="dropDownText" />
+			<Dropdown placeholder={placeholder} options={options} value={this.props.category} 
+			onChange={(e, { value }) => (this.handleChange(value))} 
+			className="dropDownText" />
 		)
 	}
 }
