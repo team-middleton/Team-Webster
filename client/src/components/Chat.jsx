@@ -1,4 +1,5 @@
 import React from 'react';
+import {Container} from 'semantic-ui-react';
 import io from 'socket.io-client';
 
 class Chat extends React.Component {
@@ -39,20 +40,23 @@ class Chat extends React.Component {
 
   render() {
     return (
-      <div id="chat">
-        <ul id="messages">
-          {this.state.messages.map((message, index) => {
-            return (<li key={index}>{message.author}: {message.message}</li>)
-          })}
-        </ul>
-        <form>
-          <input type="text" value={this.state.message} onChange={(event) => this.setState({message: event.target.value})} />
-          <button onClick={(event) => {
-            event.preventDefault()
-            this.sendMessage()
-          }}>Send</button>
-        </form>
-      </div>
+      <Container>
+        <div id="chat">
+          <h1>Chat with others in your mood!</h1>
+          <ul id="messages">
+            {this.state.messages.map((message, index) => {
+              return (<li key={index}>{message.author}: {message.message}</li>)
+            })}
+          </ul>
+          <form>
+            <input type="text" placeholder="Type here!" value={this.state.message} onChange={(event) => this.setState({message: event.target.value})} />
+            <button onClick={(event) => {
+              event.preventDefault()
+              this.sendMessage()
+            }}>Send</button>
+          </form>
+        </div>
+      </Container>
     )
   }
 }

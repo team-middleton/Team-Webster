@@ -307,7 +307,7 @@ class App extends React.Component {
             />
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column width={5}>
+            <Grid.Column width={6}>
               <Grid.Row>
                 <div style={{margin:'0 auto', overflow:'auto'}}>
                   <SpotifyPlayer uri={'spotify:user:spotify:playlist:' + this.state.uriId} size={{width: 470, height: 400}} theme="black" view="list" />
@@ -335,7 +335,9 @@ class App extends React.Component {
               </Grid.Row>
             </Grid.Column>
             <Grid.Column width={5}>
-              <Chat mood={this.state.selectedCategory} user={this.state.user}/>
+              <Grid.Row>
+                <Chat mood={this.state.selectedCategory} user={this.state.user}/>
+              </Grid.Row>
             </Grid.Column>
           </Grid.Row>
         </Grid>
