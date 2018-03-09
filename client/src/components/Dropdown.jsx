@@ -38,22 +38,26 @@ class Drop extends React.Component {
 			var handleClose = this.props.handleClose;
 			var placeholderStyle = {
 				color: '#016936',
-				fontSize: '30px',
+				fontSize: '25px',
 				fontWeight: 'bold'
 			}
 		} else {
 			var placeholderStyle = {
-				color: '#016936'
+				// color: '#016936'
 			}
 			var handleClose = function() {
 				return 1+1;
 			}
 		}
 
-		var placeholder = <div style={placeholderStyle}> choose mood</div>
+		// var placeholder = <p style={placeholderStyle}> choose mood</p>
 
 		return (
-			<Dropdown placeholder={placeholder} options={options} value={this.props.category} 
+			<Dropdown 
+			placeholder="choose your mood"
+			options={options} 
+			style={placeholderStyle} 
+			value={this.props.category} 
 			onChange={(e, { value }) => (this.handleChange(value))} 
 			className="dropDownText" />
 		)

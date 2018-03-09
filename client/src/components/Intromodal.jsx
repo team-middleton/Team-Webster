@@ -7,7 +7,8 @@ class Intromodal extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-        modalOpen: false
+        modalOpen: false,
+
       }
       this.handleClose = this.handleClose.bind(this);
 
@@ -28,6 +29,8 @@ class Intromodal extends React.Component {
   render() {
     return (
       <Modal
+        closeOnEscape={false}
+        closeOnRootNodeClick={true}
         open={this.state.modalOpen}
         onClose={this.handleClose}
         basic
