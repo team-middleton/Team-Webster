@@ -87,7 +87,7 @@ const MapComponent = withScriptjs(withGoogleMap((props) => (
               >
               <div className="infoWindow">{place.name}
               <br />{place.location.address1}
-              <br /><a href={place.url}>IS THIS PLACE ANY GOOD??</a>
+              <br /><a target="_blank" href={place.url}>IS THIS PLACE ANY GOOD??</a>
               </div>
               </InfoWindow>
             )}
