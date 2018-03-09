@@ -30,7 +30,7 @@ class Intromodal extends React.Component {
     return (
       <Modal
         closeOnEscape={false}
-        closeOnRootNodeClick={true}
+        closeOnRootNodeClick={false}
         open={this.state.modalOpen}
         onClose={this.handleClose}
         basic

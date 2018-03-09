@@ -188,3 +188,7 @@ label {
 #messages li:nth-child(even) {
 	background: #1b1c1d;
 }
+
+.infoWindow {
+	color: black;
+}
