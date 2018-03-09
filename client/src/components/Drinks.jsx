@@ -45,18 +45,21 @@ class Drinks extends React.Component {
 
 		console.log('drinks ', this.props.drinks);
 		return (
-			<div  className="drinkSlider" >
-				<Slider {...settings} >
-					{this.props.drinks.map((drink, i) =>
-						<div key={i} className='slide'  >
-							<img id={drink.drinkName} src={drink.drinkImageUrl}
-								onClick={() => this.clickHandler(drink)} className="drinkImage"/>
-								<Description drink={this.props.drinks[i]} className="drinkDescription" />
-						</div>
-					)}
-				</Slider>
-				
-				
+			<div>
+				<h1>Mix a cocktail...</h1>
+				<div  className="drinkSlider" >
+					<Slider {...settings} >
+						{this.props.drinks.map((drink, i) =>
+							<div key={i} className='slide'  >
+								<img id={drink.drinkName} src={drink.drinkImageUrl}
+									onClick={() => this.clickHandler(drink)} className="drinkImage"/>
+									<Description drink={this.props.drinks[i]} className="drinkDescription" />
+							</div>
+						)}
+					</Slider>
+					
+					
+				</div>
 			</div>
 		)
 	}
