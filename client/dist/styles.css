@@ -3,6 +3,13 @@ body {
 	color: white;
 }
 
+.modalPlaceHolder {
+	color: green;
+}
+.appPlaceHolder {
+	color: green;
+}
+ 
 
 .player {
   padding-left: 30px;
@@ -111,6 +118,12 @@ p.description_content{
 	font-size: 17px;
 }
 
+.modalPlaceHolder {
+	color: green;
+}
+.appPlaceHolder {
+	color: green;
+}
 
 label {
   color: white;
