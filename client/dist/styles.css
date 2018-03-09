@@ -136,44 +136,45 @@ label {
 }
 
 #chat {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+	position: relative;
 	font: 13pt Helvetica, Arial;
 }
 
-#chat form {
-	padding: 3px; 
-	position: fixed; 
-	bottom: .5%; 
-	width: 100%;
+/* #chat h1 {
+	margin: 0;
+	padding: 0;
+	position: fixed;
 }
 
+#chat form {
+	bottom: 1%;
+	width: 30%;
+	position: fixed;
+} */
+
 #chat form input {
-	border: 0; 
-	padding: 10px; 
-	width: 25%; 
-	margin-right: .5%;
-	margin-left: .5%;
+	width: 70%;
+	height: 35px;
+	margin: 0 0.5%;
 }
 
 #chat form button {
-	width: 10%; 
-	background: lightgrey; 
-	border: none; 
-	padding: 10px;
+	width: 25%;
+	height: 35px;
+	margin: 0 1.5%;
 }
 
 #messages {
 	list-style-type: none; 
-	margin: 0px 10px;
+	margin: 0;
 	padding: 0;
-	position: fixed;
-	width: 37%;
+	/* position: fixed; */
+	/* width: 30%; */
+	width: 100%;
 	word-wrap: break-word;
-	max-height: 625px;
+	max-height: 575px;
 	overflow: scroll;
-	bottom: 45px;
+	bottom: 5%;
 }
 
 #messages li {
