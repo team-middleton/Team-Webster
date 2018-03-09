@@ -44,6 +44,11 @@ class Drinks extends React.Component {
 		
 
 		console.log('drinks ', this.props.drinks);
+		var settings = {
+			dots: false,
+			arrows: true,
+			autoplay: false
+		}
 		return (
 			<div>
 				<h1>Mix a cocktail...</h1>
