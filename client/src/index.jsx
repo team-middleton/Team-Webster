@@ -29,7 +29,7 @@ class App extends React.Component {
       lat: 0, //40.7505788,
       long: 0,//-73.9765793,
       concerts: [],
-      user: null,
+      user: '',
       showIntroModal: true
     }
     this.onLoginClick = this.onLoginClick.bind(this);
@@ -301,6 +301,7 @@ class App extends React.Component {
               obtainFavorite={this.obtainFavorite}
               deleteFavorite={this.deleteFavorite}
               navColor={this.state.navColor}
+              user={this.state.user}
             />
           </Grid.Row>
           <Grid.Row>
