@@ -28,15 +28,15 @@ class Drinks extends React.Component {
 
 	render() {
 		var settings = {
-			dots: true,
+			dots: false,
 			infinite: true,
 			speed: 500,
 			slidesToShow: 1,
 			slidesToScroll: 1,
-			autoplay: true,
+			autoplay: false,
 			autoplaySpeed: 3000,
 			fade: true,
-			arrows: false,
+			arrows: true,
 			useCSS: true
 		};
 		
@@ -44,11 +44,6 @@ class Drinks extends React.Component {
 		
 
 		console.log('drinks ', this.props.drinks);
-		var settings = {
-			dots: false,
-			arrows: true,
-			autoplay: false
-		}
 		return (
 			<div>
 				<h1>Mix a cocktail...</h1>

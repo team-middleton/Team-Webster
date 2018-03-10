@@ -12,7 +12,7 @@ class ConcertsContainer extends React.Component{
     render() {
         if(this.props.concerts.length) {
             var concertsTitle = 
-            <h5 className="concertListTitle" > Related concerts coming up in your area </h5>
+            <h1 className="concertListTitle" > Related concerts coming up in your area </h1>
             
         } else {
             var concertsTitle =
