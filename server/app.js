@@ -20,8 +20,10 @@ const io = socket(
 
 io.on('connection', (socket) => {
   socket.on('SEND_MESSAGE', function(data) {
-    // console.log('server received data', data)
     io.emit('RECEIVE_MESSAGE', data)
+  })
+  socket.on('ECONNRESET', function(err) {
+    console.error(error)
   })
 })
 
