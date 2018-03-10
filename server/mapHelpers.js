@@ -5,7 +5,7 @@ var zipcodes = require('zipcodes');
 const paramsObj = {
   party: 'danceclubs',
   chill: 'spas',
-  classical: 'cocktail_bars',
+  classical: 'cocktailbars',
   country: 'divebars',
   latin: 'latin'
 };
