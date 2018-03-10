@@ -134,13 +134,14 @@ app.post('/playlist', function(req, res) {
 
 //Basic signup route which uses bcrypt to salt and hash and eventually gets inserted into the database.
 app.post('/signup', function(req, res) {
+  console.log('req body in sign up ', req.body);
   const saltRounds = 10;
   bcrypt.hash(req.body.password, saltRounds, function(error, hash) {
     const sqlQuery = `INSERT INTO users (username, password, email) VALUES (?, ?, ?)`;
     const placeholderValues = [req.body.username, hash, req.body.email];
     db.query(sqlQuery, placeholderValues, function(error) {
       if (error) {
-        console.log(error);
+        console.log('err in storing user and pw ', error);
         res.sendStatus(500);
       } else {
         res.sendStatus(201);
