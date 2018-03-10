@@ -140,7 +140,8 @@ app.post('/signup', function(req, res) {
     const placeholderValues = [req.body.username, hash, req.body.email];
     db.query(sqlQuery, placeholderValues, function(error) {
       if (error) {
-        throw error;
+        console.log(error);
+        res.sendStatus(500);
       } else {
         res.sendStatus(201);
       }
@@ -184,7 +185,8 @@ app.post('/favorites', auth, function(req, res) {
   const placeholderValues = [stringDrinks, req.body.playlist];
   db.query(sqlQuery, placeholderValues, function(error) {
     if (error) {
-      throw error;
+      console.log(error);
+      res.sendStatus(500);
     } else {
       res.sendStatus(201);
     }
@@ -196,7 +198,8 @@ app.post('/delete', auth, function(req, res) {
   const sqlQuery = `DELETE FROM favorites WHERE id = ${req.body.favId}`
   db.query(sqlQuery, function(error) {
     if (error) {
-      throw error;
+      console.log(error);
+      res.sendStatus(500);
     } else {
       res.sendStatus(201);
     }
@@ -209,9 +212,10 @@ app.get('/favorites', function(req, res) {
     const sqlQuery = `SELECT favorites.id, drinks, music FROM favorites JOIN users ON favorites.user_id = users.id AND users.username = '${req.session.user}'`;
     db.query(sqlQuery, function(error, results) {
       if (error) {
-        throw error;
+        console.log(error);
+        res.sendStatus(500);
       } else {
-        console.log("These are my results in server", results)
+        //console.log("These are my results in server", results)
         res.status(200).send(results);
       }
     })
