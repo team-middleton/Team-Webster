@@ -12,7 +12,8 @@ import Chat from './components/Chat.jsx'
 import { Message, Grid } from 'semantic-ui-react'
 import YelpMap from './components/Map.jsx';
 import ConcertsContainer from './components/ConcertsContainer.jsx';
-import Intromodal from './components/Intromodal.jsx'
+import Intromodal from './components/Intromodal.jsx';
+import ZipCodeRequest from './components/ZipCodeRequest.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class App extends React.Component {
       navColor: 'black',
       lat: 0, //40.7505788,
       long: 0,//-73.9765793,
+      zipCode: 0,
       concerts: [],
       user: '',
       showIntroModal: true
@@ -46,6 +48,7 @@ class App extends React.Component {
     this.changeBackgroundColor = this.changeBackgroundColor.bind(this);
     this.getPosition = this.getPosition.bind(this);
     this.getConcerts = this.getConcerts.bind(this);
+    this.setZipCode = this.setZipCode.bind(this); 
     // this.toggleIntroModal = this.toggleIntroModal.bind(this)
   }
 
@@ -113,12 +116,21 @@ class App extends React.Component {
   )
   }
 
+  setZipCode(zip) {
+    this.setState({
+      zipCode: zip
+    }, ()=> {
+      console.log('new zip code state ', this.state.zipCode)
+    })
+  }
+
   getConcerts() { 
     axios.get('/upcomingEvents', {
       params: {
         category: this.state.selectedCategory,
         lat: this.state.lat,
-        long: this.state.long
+        long: this.state.long,
+        zip: this.state.zipCode
       }
     })
     .then((res) => {
@@ -279,6 +291,21 @@ class App extends React.Component {
     } else {
       rightSide = <Drinks drinks={this.state.drinks} />;
     }
+
+    if (this.state.lat === 0 ) {
+      var mapOrZipRequest = < ZipCodeRequest setZipCode={this.setZipCode} />
+    } else {
+      var mapOrZipRequest =      
+        <div style={{ height: `400px` }}>
+          <h1> Go check out these places to fit your mood!</h1>
+            <YelpMap 
+              category={this.state.selectedCategory}
+              lat={this.state.lat}
+              long={this.state.long}
+            />  
+        </div>
+    }
+
   	return (
       <div> 
         <div>
@@ -323,14 +350,8 @@ class App extends React.Component {
                   {rightSide}
               </Grid.Row>
               <Grid.Row> 
-                <h1> Go check out these places to fit your mood!</h1>
-                <div style={{ height: `400px` }}>
-                  <YelpMap 
-                    category={this.state.selectedCategory}
-                    lat={this.state.lat}
-                    long={this.state.long}
-                  />  
-                </div>
+                {mapOrZipRequest}
+           
               </Grid.Row>
             </Grid.Column>
             <Grid.Column width={5}>

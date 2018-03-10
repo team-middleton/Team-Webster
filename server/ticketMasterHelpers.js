@@ -11,7 +11,7 @@ ticketMasterMethods.createGeoPoint = function (lat, long) {
     return geohash.encode(lat, long);
 }
 
-ticketMasterMethods.getEventsFromTicketMaster = function(keyword, lat, long, callback) {
+ticketMasterMethods.getEventsFromTicketMaster = function(keyword, lat, long, zip, callback) {
     var geoHash = this.createGeoPoint(lat, long);
     var url = `https://app.ticketmaster.com/discovery/v2/events.json?geoPoint=${geoHash}&radius=20&unit=miles&keyword=${keyword}&size=20&classificationName=music&sort=date,asc&apikey=GrOOwv0SlHcwV6DctS7F86eWwXRdJDOJ`;
     axios.get(url)
