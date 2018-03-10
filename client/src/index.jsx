@@ -313,7 +313,7 @@ class App extends React.Component {
               </Grid.Row>
               <Grid.Row width={5}>
                 
-                  <ConcertsContainer concerts={this.state.concerts}  />
+                  <ConcertsContainer concerts={this.state.concerts} className="concertsContainer"  />
 
               </Grid.Row>
             </Grid.Column>
