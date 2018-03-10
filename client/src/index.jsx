@@ -351,7 +351,7 @@ class App extends React.Component {
             </Grid.Column>
             <Grid.Column width={5}>
               <Grid.Row> 
-                  {rightSide}
+                {rightSide}
               </Grid.Row>
               <Grid.Row> 
                 {mapOrZipRequest}
