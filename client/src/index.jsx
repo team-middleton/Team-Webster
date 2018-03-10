@@ -49,6 +49,7 @@ class App extends React.Component {
     this.getPosition = this.getPosition.bind(this);
     this.getConcerts = this.getConcerts.bind(this);
     this.setZipCode = this.setZipCode.bind(this); 
+    this.setCategory = this.setCategory.bind(this);
     // this.toggleIntroModal = this.toggleIntroModal.bind(this)
   }
 
@@ -112,8 +113,22 @@ class App extends React.Component {
       // THIS IS BROKEN; MUST FIX COCTAILS
       this.settingAlcohols(event);
       this.getConcerts();
-    }
-  )
+    })
+  }
+
+  setCategory(event) {
+    this.getPosition((pos) => {
+      console.log('success', pos.coords);
+      this.setState({ 
+        lat: pos.coords.latitude, 
+        long: pos.coords.longitude,
+        selectedCategory: event,
+        showIntroModal: false
+      }, () => {
+        this.settingAlcohols(event);
+        this.getConcerts();
+      })
+    })
   }
 
   setZipCode(zip) {
@@ -258,13 +273,8 @@ class App extends React.Component {
     }
   }
   
-  getPosition() {
-    navigator.geolocation.getCurrentPosition((pos) => {
-      console.log('success', pos.coords);
-      this.setState({ lat: pos.coords.latitude, long: pos.coords.longitude });
-    }, (error) => {
-      console.log('error', error);  
-    });
+  getPosition(callback) {
+    navigator.geolocation.getCurrentPosition(callback);
   }
 
   render () {
@@ -309,7 +319,7 @@ class App extends React.Component {
   	return (
       <div> 
         <div>
-      <Intromodal selectHandler={this.changeCategory} />
+      <Intromodal selectHandler={this.setCategory} />
       </div>
       <div>
         <Grid stackable>
