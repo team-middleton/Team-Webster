@@ -278,13 +278,12 @@ class App extends React.Component {
     } else {
       rightSide = <Drinks drinks={this.state.drinks} />;
     }
-    console.log('app rendered')
   	return (
       <div> 
         <div>
       <Intromodal selectHandler={this.changeCategory} />
       </div>
-      
+      <div>
         <Grid stackable>
           <Grid.Row columns={16}>
             <Navigation
@@ -339,6 +338,7 @@ class App extends React.Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
+        </div>
         </div>
     )
   }
