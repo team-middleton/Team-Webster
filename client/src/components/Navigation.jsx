@@ -30,11 +30,15 @@ class Navigation extends React.Component {
        </Dropdown.Item>
       )
     }
-
+    if(this.props.user === '') {
+      var dropdownText = 'Login/Sign Up'
+    } else {
+      var dropdownText = 'Log out'
+    }
     return (
       <Menu borderless inverted fluid color={this.props.navColor} style={{height: '50px'}}>
         <Menu.Item position="left" className='menuLogo'>Drinqify</Menu.Item>
-        <Menu.Item position="right">
+        <Menu.Item position="center">
           <Drop selectHandler = {this.props.selectHandler} category={this.props.category}/>
         </Menu.Item>
         <Menu.Item position="right">
@@ -43,9 +47,12 @@ class Navigation extends React.Component {
             <Menu.Item>Hi, {this.props.user}!</Menu.Item>
             ) : <div></div>
           }
+
+          {this.props.user !== '' ? (
           <Menu.Item onClick={this.props.addFavorite}>
             {heartState}
-          </Menu.Item>
+          </Menu.Item> ) : <div></div>}
+          {this.props.user !== '' ? (
           <Dropdown item text='Favorites'>
             <Dropdown.Menu>
               {favorites}
@@ -60,22 +67,27 @@ class Navigation extends React.Component {
               />
             </Dropdown.Menu>
           </Dropdown>
-          <Dropdown item text='Login/Sign Up'>
+           ) : <div></div>}
+
+          <Dropdown item text={dropdownText}>
             <Dropdown.Menu>
-              <Dropdown.Item as='a' name='login' onClick={this.props.onLoginClick}>
+              {this.props.user === '' ? (<Dropdown.Item as='a' name='login' onClick={this.props.onLoginClick}>
                 Login
-              </Dropdown.Item>
-              <Dropdown.Item as='a' name='signup' onClick={this.props.onSignupClick}>
+              </Dropdown.Item>) : <div> </div>}
+
+              {this.props.user === '' ? (<Dropdown.Item as='a' name='signup' onClick={this.props.onSignupClick}>
                 Sign Up
-              </Dropdown.Item>
-                <Popup
+              </Dropdown.Item>) : <div></div>}
+              
+              {this.props.user !== '' ? (<Popup
                   trigger={<Dropdown.Item as='a' name='logout' onClick={this.props.onLogoutClick}>Logout</Dropdown.Item>}
                   content='You have logged out!'
                   on='click'
                   position='top right'
                   basic
                   hideOnScroll
-                />
+                />): <div></div>}
+                
             </Dropdown.Menu>
           </Dropdown>
         </Menu.Item>
