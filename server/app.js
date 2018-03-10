@@ -228,7 +228,7 @@ app.get('/favorites', function(req, res) {
 
 //respond with map of yelp places to go based on category chosen
 app.post('/map', (req, res) => {
-  mapHelpers.getYelp(req.body.category, req.body.lat, req.body.long, res.send.bind(res));
+  mapHelpers.getYelp(req.body.category, req.body.lat, req.body.long, req.body.zipCode, res.send.bind(res));
 });
 // ticketMasterHelpers.createGeoPoint(40.755603, -73.984931);
 

@@ -296,7 +296,7 @@ class App extends React.Component {
       rightSide = <Drinks drinks={this.state.drinks} />;
     }
 
-    if (this.state.lat === 0 ) {
+    if (this.state.lat === 0 && this.state.zipCode === 0) {
       var mapOrZipRequest = < ZipCodeRequest setZipCode={this.setZipCode} />
     } else {
       var mapOrZipRequest =      
@@ -306,6 +306,7 @@ class App extends React.Component {
               category={this.state.selectedCategory}
               lat={this.state.lat}
               long={this.state.long}
+              zipCode={this.state.zipCode}
             />  
         </div>
     }
