@@ -285,20 +285,12 @@ class App extends React.Component {
     if (this.state.drinks.length === 0) {
       rightSide = <Message size='massive' compact color='black'>
         <Message.Header>
-          Welcome to our App!
+          Loading...
         </Message.Header>
         <br />
-        <Message.Item>
-          Simply choose a <b>mood</b> up top and we will set the tone for you.
-        </Message.Item>
-        <br />
-        <Message.Item>
-          We have chosen what we think is the best playlist and drink pairings.
-        </Message.Item>
-        <br />
-        <Message.Item>
-          Enjoy!
-        </Message.Item>
+        <Message.Header>
+          We appreciate your patience!
+        </Message.Header>
       </Message>;
     } else {
       rightSide = <Drinks drinks={this.state.drinks} />;
