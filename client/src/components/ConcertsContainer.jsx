@@ -16,8 +16,10 @@ class ConcertsContainer extends React.Component{
             
         } else {
             var concertsTitle =
-            <h3 className="concertListTitle" > Input a zip code or enable location <br/> to view related concerts in your area </h3>
-            
+            <h3 className="ZipCodeRequest" > 
+            Input a zip code or enable location to <br/>
+            view some upcoming mood-appropriate <br/> 
+            concerts in your area </h3>
         }
 
 

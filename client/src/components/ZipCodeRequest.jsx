@@ -32,9 +32,9 @@ class ZipCodeRequest extends React.Component {
     render() {
         return (
             <div className="ZipCodeRequest"> 
-                <h3> To use our map and concert list features,  
-                    <br />
-                Please enable your location or input your zipcode below  </h3>
+                <h3> To see a map of great spots in your area <br/>
+                that are suited to your mood, please enable <br/>
+                your location or input your zipcode below </h3>
                 <Input
                         icon={<Icon name='search' inverted circular link onClick={this.handeSubmit}  />}
                         placeholder='Zipcode...'
