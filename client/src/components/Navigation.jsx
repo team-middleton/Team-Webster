@@ -12,7 +12,7 @@ class Navigation extends React.Component {
     
     //This conditionally renders the heart icon to go from empty to a filled in a heart.
     let heartState;
-    if (this.props.favorited === false) {
+    if (this.props.favorited === false) { 
       heartState = <Icon className='empty heart'></Icon>
     } else {
       heartState = <Icon className='heart'></Icon>
@@ -38,6 +38,11 @@ class Navigation extends React.Component {
           <Drop selectHandler = {this.props.selectHandler} category={this.props.category}/>
         </Menu.Item>
         <Menu.Item position="right">
+          {console.log('user', this.props.user)}
+          {this.props.user !== '' ? (
+            <Menu.Item>Hi, {this.props.user}!</Menu.Item>
+            ) : <div></div>
+          }
           <Menu.Item onClick={this.props.addFavorite}>
             {heartState}
           </Menu.Item>
