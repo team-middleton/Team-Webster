@@ -308,8 +308,8 @@ class App extends React.Component {
       var mapOrZipRequest = < ZipCodeRequest setZipCode={this.setZipCode} />
     } else {
       var mapOrZipRequest =      
-        <div style={{ height: `400px` }}>
-          <h1> Go check out these places to fit your mood!</h1>
+        <div style={{ 'height': '400px', 'margin-top': '10px'}}>
+          <h1>Some mood-appropriate spots...</h1>
             <YelpMap 
               category={this.state.selectedCategory}
               lat={this.state.lat}
@@ -372,6 +372,7 @@ class App extends React.Component {
               </Grid.Row>
             </Grid.Column>
           </Grid.Row>
+          <Grid.Row style={{height: '20px'}}></Grid.Row>
         </Grid>
         </div>
         </div>
