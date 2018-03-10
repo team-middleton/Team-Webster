@@ -11,13 +11,19 @@ class ConcertsContainer extends React.Component{
     }
     render() {
         if(this.props.concerts.length) {
-            var concertsTitle = "Related concerts coming up in your area"
+            var concertsTitle = 
+            <h5 className="concertListTitle" > Related concerts coming up in your area </h5>
+            
         } else {
-            var concertsTitle =" Select your mood to view concerts in your area"
+            var concertsTitle =
+            <h3 className="concertListTitle" > Select your mood and enable location <br/> to view related concerts in your area </h3>
+            
         }
+
+
         return(
             <div>
-                <h5 className="concertListTitle" > {concertsTitle} </h5>
+                    {concertsTitle}
             
                 <div className = "concertList" style={{margin:'0 auto', overflow:'auto'}}>
                         <Container> 

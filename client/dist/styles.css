@@ -132,6 +132,11 @@ label {
   color: white;
 }
 
+.ZipCodeRequest {
+	padding-top: 75px;
+	text-align: center;
+}
+
 
 
 @media screen and (max-width: 699px) and (min-width: 520px) {
