@@ -63,7 +63,7 @@ class YelpMap extends React.Component {
           />}
    	    />
    	  );
-    } else { return <div>choose a mood!</div> }
+    } else { return <div>Loading...</div> }
   }
 }
 

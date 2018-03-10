@@ -226,7 +226,6 @@ class App extends React.Component {
 
   componentDidMount() {
     console.log('component did mount')
-    this.getPosition();
     axios.get('/user')
     .then((response) => {
       console.log('user: ', response.data)
