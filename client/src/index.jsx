@@ -117,18 +117,19 @@ class App extends React.Component {
   }
 
   setCategory(event) {
-    this.getPosition((pos) => {
+    this.settingAlcohols(event);
+    this.setState({
+      selectedCategory: event,
+      showIntroModal: false
+    }, this.getPosition((pos) => {
       console.log('success', pos.coords);
       this.setState({ 
         lat: pos.coords.latitude, 
         long: pos.coords.longitude,
-        selectedCategory: event,
-        showIntroModal: false
       }, () => {
-        this.settingAlcohols(event);
         this.getConcerts();
       })
-    })
+    }))
   }
 
   setZipCode(zip) {
