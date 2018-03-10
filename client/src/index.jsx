@@ -136,6 +136,7 @@ class App extends React.Component {
     this.setState({
       zipCode: zip
     }, ()=> {
+      this.getConcerts();
       console.log('new zip code state ', this.state.zipCode)
     })
   }
@@ -150,6 +151,7 @@ class App extends React.Component {
       }
     })
     .then((res) => {
+      console.log('concert data in client gettin concerts ', res.data)
       this.setState({
         concerts: res.data
       })
