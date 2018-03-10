@@ -23,7 +23,7 @@ class Login extends React.Component {
       username: this.state.username,
       password: this.state.password
     }).then(() => {
-      this.setState({username: '', password: ''});
+      //this.setState({username: '', password: ''});
       this.props.renderFavorite();
       ReactDOM.render(<App />, document.getElementById('app'));
     }).catch((error) => {

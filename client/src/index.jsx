@@ -26,8 +26,8 @@ class App extends React.Component {
       listOfFavorites: [],
       favoriteId: '',
       navColor: 'black',
-      lat: 40.7505788,
-      long: -73.9765793,
+      lat: 0, //40.7505788,
+      long: 0,//-73.9765793,
       concerts: [],
       user: null,
       showIntroModal: true
@@ -47,10 +47,6 @@ class App extends React.Component {
     this.getPosition = this.getPosition.bind(this);
     this.getConcerts = this.getConcerts.bind(this);
     // this.toggleIntroModal = this.toggleIntroModal.bind(this)
-  }
-
-  componentDidMount() {
-    this.getPosition();
   }
 
 //this function, make requests to APIs for cocktails, beer, and wine, and playlist,\
@@ -87,7 +83,7 @@ class App extends React.Component {
       }, this.getAlcohols)
     } else if (category === 'classical') {
       this.setState({
-        alcohols: ['white+wine', 'red+wine', 'whiskey', 'gin']
+        alcohols: [/*'white+wine', 'red+wine', */'whiskey', 'gin']
       }, this.getAlcohols)
     } else if (category === 'latin') {
       this.setState({
@@ -107,7 +103,8 @@ class App extends React.Component {
   //call the settingAlcohots function above
   changeCategory(event) {
     this.setState({
-      selectedCategory: event
+      selectedCategory: event,
+      showIntroModal: false
     }, () => {
       // THIS IS BROKEN; MUST FIX COCTAILS
       this.settingAlcohols(event);
@@ -200,6 +197,7 @@ class App extends React.Component {
 
   componentDidMount() {
     console.log('component did mount')
+    this.getPosition();
     axios.get('/user')
     .then((response) => {
       console.log('user: ', response.data)
