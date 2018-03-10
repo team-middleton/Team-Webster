@@ -204,16 +204,21 @@ app.post('/delete', auth, function(req, res) {
 })
 
 //This GETS all the favorites from the current user logged in.
-app.get('/favorites', auth, function(req, res) {
-  const sqlQuery = `SELECT favorites.id, drinks, music FROM favorites JOIN users ON favorites.user_id = users.id AND users.username = '${req.session.user}'`;
-  db.query(sqlQuery, function(error, results) {
-    if (error) {
-      throw error;
-    } else {
-      console.log("These are my results in server", results)
-      res.status(200).send(results);
-    }
-  })
+app.get('/favorites', function(req, res) {
+  if(req.session.user) {
+    const sqlQuery = `SELECT favorites.id, drinks, music FROM favorites JOIN users ON favorites.user_id = users.id AND users.username = '${req.session.user}'`;
+    db.query(sqlQuery, function(error, results) {
+      if (error) {
+        throw error;
+      } else {
+        console.log("These are my results in server", results)
+        res.status(200).send(results);
+      }
+    })
+  }
+  else {
+    res.send([]);
+  }
 })
 
 //respond with map of yelp places to go based on category chosen
