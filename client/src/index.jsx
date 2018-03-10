@@ -144,7 +144,8 @@ class App extends React.Component {
       .then(() => {
         console.log("Logged Out!");
         this.setState({
-          listOfFavorites: []
+          listOfFavorites: [],
+          user: ''
         })
       })
       .catch((error) => {
