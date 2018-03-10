@@ -11,7 +11,7 @@
     "start": "npm i -g webpack && webpack && node server/app.js",
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/app.js",
-    "test": "mocha -w test/helpers/browser.js test/*.spec.js",
+    "test": "mocha -w test/compiled/*.spec.js",
     "dev:hot": "webpack-dev-server --hot --inline --progress --colors --watch --display-error-details --display-cached --content-base ./"
   },
   "author": "Team Webster",
@@ -38,6 +38,7 @@
     "bcrypt": "^1.0.3",
     "body-parser": "^1.17.2",
     "dateformat": "^3.0.3",
+    "email-validator": "^1.1.1",
     "express": "^4.15.0",
     "express-promise": "^0.4.0",
     "express-session": "^1.15.6",

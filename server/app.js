@@ -8,6 +8,7 @@ var session = require('express-session');
 var mapHelpers = require('./mapHelpers.js');
 var ticketMasterHelpers = require('./ticketMasterHelpers');
 var socket = require('socket.io');
+var validator = require("email-validator");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -236,4 +237,11 @@ app.get('/upcomingEvents', function(req, res) {
     res.send(response)
     // res.sendStatus(201);
   })
+})
+
+app.get('/emailCheck', function(req, res) {
+  var email = req.query.email;
+  console.log('email validator email ', email)
+  console.log('email validator validate ', validator.validate(email))
+  res.send(validator.validate(email));
 })
