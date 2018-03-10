@@ -10,7 +10,10 @@ class YelpMap extends React.Component {
   	  category: '',
   	  yelpList: [],
   	  itemClicked: 0,
-  	  infoOpen: true
+  	  infoOpen: true,
+  	  googLat: 0,
+  	  googLong: 0,
+  	  zipCode: 0
   	};
   	this.getYelp = this.getYelp.bind(this);
   	this.handleClick = this.handleClick.bind(this);
@@ -21,7 +24,8 @@ class YelpMap extends React.Component {
     axios.post('/map', { 
       category: category,
       lat: this.props.lat,
-      long: this.props.long
+      long: this.props.long,
+      zipCode: this.props.zipCode
     })
     .then((res) => {
       console.log(res.data)
@@ -32,15 +36,25 @@ class YelpMap extends React.Component {
 	});
   }
 
+  getMapCoords(zip) {
+    axios.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + zip)
+    .then((res) => {
+      console.log(res.data.results[0].geometry.location);
+      this.setState({ googLat: res.data.results[0].geometry.location.lat, 
+      	googLong: res.data.results[0].geometry.location.lng })
+    })
+  }
+
   //function to set state, change clicked
   handleClick(i, e) {
     this.setState({ itemClicked: i });
   }
 
   componentDidUpdate() {
-  	if (this.state.category !== this.props.category) {
+  	if (this.state.category !== this.props.category || this.state.zipCode !== this.props.zipCode) {
   	  this.getYelp(this.props.category);
-  	  this.setState({ category: this.props.category });
+  	  this.getMapCoords(this.props.zipCode);
+  	  this.setState({ category: this.props.category, zipCode: this.props.zipCode });
   	}
   }
 
@@ -54,6 +68,9 @@ class YelpMap extends React.Component {
           yelpList={this.state.yelpList}
           lat={this.props.lat}
           long={this.props.long}
+          googLat={this.state.googLat}
+          googLong={this.state.googLong}
+          zipCode={this.props.zipCode}
           infoOpen={this.state.infoOpen}
           googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDu_83xpevHdDbkGIRm_wbY-6MtIT_b2cg&v=3.exp&libraries=geometry,drawing,places"
           loadingElement={<div style={{ height: `100%` }} />}
@@ -71,7 +88,7 @@ const MapComponent = withScriptjs(withGoogleMap((props) => (
   <GoogleMap
     defaultZoom={13}
     defaultCenter={{ lat: 40.755603, lng: -73.984931 }}
-    center={{ lat: props.lat, lng: props.long }}
+    center={props.zipCode === 0 ? { lat: props.lat, lng: props.long } : { lat: props.googLat, lng: props.googLong }}
   >
     {
       props.isMarkerShown && props.yelpList.map((place, i) => {
